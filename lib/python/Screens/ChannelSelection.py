@@ -52,6 +52,7 @@ from Tools.ServiceReference import service_types_tv_ref, service_types_radio_ref
 from Plugins.Plugin import PluginDescriptor
 from Components.PluginComponent import plugins
 from RecordTimer import TIMERTYPE
+from Components.EpgList import getScreenFactor
 
 from time import localtime, time
 try:
@@ -802,15 +803,6 @@ class ChannelSelectionEPG(InfoBarButtonSetup):
 		eventname = str(self.list[0][1])
 		if eventid is None:
 			return
-		indx = int(self.servicelist.getCurrentIndex())
-		selx = self.servicelist.instance.size().width()
-		while indx+1 > config.usage.serviceitems_per_page.value:
-			indx = indx - config.usage.serviceitems_per_page.value
-		pos = self.servicelist.instance.position().y()
-		sely = int(pos)+(int(self.servicelist.ItemHeight)*int(indx))
-		temp = int(self.servicelist.instance.position().y())+int(self.servicelist.instance.size().height())
-		if int(sely) >= temp:
-			sely = int(sely) - int(self.listHeight)
 		menu1 = _("Record now")
 		menu2 = _("Record next")
 		for timer in self.session.nav.RecordTimer.timer_list:
@@ -820,11 +812,17 @@ class ChannelSelectionEPG(InfoBarButtonSetup):
 				if timer.eit == eventidnext and ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == refstr:
 					menu2 = _("Change next timer")
 		if eventidnext is not None:
-			menu = [(menu1, 'CALLFUNC', self.ChoiceBoxCB, self.doRecordCurrentTimer), (menu2, 'CALLFUNC', self.ChoiceBoxCB, self.doRecordNextTimer)]
+			menu = [(menu1, 'CALLFUNC', self.ChoiceBoxCB, self.doRecordCurrentTimer), 
+					(menu2, 'CALLFUNC', self.ChoiceBoxCB, self.doRecordNextTimer)
+					]
+			if menu2 == _("Record next"):
+				menu.append((_("Zap next"), 'CALLFUNC', self.ChoiceBoxCB, self.doZapTimer))
+				if not TIMERTYPE.ALWAYS_ZAP:
+					menu.append((_("Zap+Record next"), 'CALLFUNC', self.ChoiceBoxCB, self.doZapRecordTimer))
 		else:
 			menu = [(menu1, 'CALLFUNC', self.ChoiceBoxCB, self.doRecordCurrentTimer)]
-		self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, list=menu, keys=['red', 'green'], skin_name="RecordTimerQuestion")
-		self.ChoiceBoxDialog.instance.move(ePoint(selx-self.ChoiceBoxDialog.instance.size().width(),self.instance.position().y()+sely))
+		self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, list=menu, keys=['red', 'green', 'yellow', 'blue'], skin_name="RecordTimerQuestion")
+		self.setChoiceBoxDialogPosition()
 		self.showChoiceBoxDialog()
 
 	def ChoiceBoxCB(self, choice):
@@ -860,18 +858,21 @@ class ChannelSelectionEPG(InfoBarButtonSetup):
 		self["ChannelSelectBaseActions"].setEnabled(True)
 
 	def doRecordCurrentTimer(self):
-		self.doInstantTimer(TIMERTYPE.JUSTPLAY, parseCurentEvent)
+		self.doInstantTimer(0, TIMERTYPE.ALWAYS_ZAP, parseCurentEvent)
 
 	def doRecordNextTimer(self):
-		self.doInstantTimer(TIMERTYPE.JUSTPLAY, parseNextEvent, True)
+		self.doInstantTimer(0, TIMERTYPE.ALWAYS_ZAP, parseNextEvent, True)
 
 	def doZapTimer(self):
-		self.doInstantTimer(1, parseNextEvent)
+		self.doInstantTimer(1, 0, parseNextEvent, True)
+
+	def doZapRecordTimer(self):
+		self.doInstantTimer(0, 1, parseNextEvent, True)
 
 	def editTimer(self, timer):
 		self.session.open(TimerEntry, timer)
 
-	def doInstantTimer(self, zap, parseEvent, next=False):
+	def doInstantTimer(self, zap, zaprecord, parseEvent, next=False):
 		serviceref = ServiceReference(self.getCurrentSelection())
 		refstr = ':'.join(serviceref.ref.toString().split(':')[:11])
 		self.epgcache = eEPGCache.getInstance()
@@ -889,15 +890,6 @@ class ChannelSelectionEPG(InfoBarButtonSetup):
 			eventname = str(self.list[1][1])
 		if eventid is None:
 			return
-		indx = int(self.servicelist.getCurrentIndex())
-		selx = self.servicelist.instance.size().width()
-		while indx+1 > config.usage.serviceitems_per_page.value:
-			indx = indx - config.usage.serviceitems_per_page.value
-		pos = self.servicelist.instance.position().y()
-		sely = int(pos)+(int(self.servicelist.ItemHeight)*int(indx))
-		temp = int(self.servicelist.instance.position().y())+int(self.servicelist.instance.size().height())
-		if int(sely) >= temp:
-			sely = int(sely) - int(self.listHeight)
 		for timer in self.session.nav.RecordTimer.timer_list:
 			if timer.eit == eventid and ':'.join(timer.service_ref.ref.toString().split(':')[:11]) == refstr:
 				if not next:
@@ -908,17 +900,32 @@ class ChannelSelectionEPG(InfoBarButtonSetup):
 					cb_func1 = lambda ret: self.removeTimer(timer)
 					cb_func2 = lambda ret: self.editTimer(timer)
 					menu = [(_("Delete timer"), 'CALLFUNC', self.RemoveTimerDialogCB, cb_func1), (_("Edit timer"), 'CALLFUNC', self.RemoveTimerDialogCB, cb_func2)]
-					self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, title=_("Select action for timer %s:") % eventname, list=menu, keys=['green', 'blue'], skin_name="RecordTimerQuestion")
-					self.ChoiceBoxDialog.instance.move(ePoint(selx-self.ChoiceBoxDialog.instance.size().width(),self.instance.position().y()+sely))
+					self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, title=_("Select action for timer %s:") % eventname, list=menu, keys=['red', 'green'], skin_name="RecordTimerQuestion")
+					self.setChoiceBoxDialogPosition()
 				self.showChoiceBoxDialog()
 				break
 		else:
 			newEntry = RecordTimerEntry(serviceref, checkOldTimers = True, dirname = preferredTimerPath(), *parseEvent(self.list))
 			if not newEntry:
 				return
-			self.InstantRecordDialog = self.session.instantiateDialog(InstantRecordTimerEntry, newEntry, zap)
+			self.InstantRecordDialog = self.session.instantiateDialog(InstantRecordTimerEntry, newEntry, zap, zaprecord)
 			retval = [True, self.InstantRecordDialog.retval()]
 			self.session.deleteDialogWithCallback(self.finishedAdd, self.InstantRecordDialog, retval)
+
+	def setChoiceBoxDialogPosition(self):
+		indx = self.servicelist.getCurrentIndex()
+		ipp = self.servicelist.instance.size().height() / self.servicelist.ItemHeight
+		while indx+1 > ipp:
+			indx -= ipp
+		sf = getScreenFactor()
+		selx = min(self.servicelist.instance.size().width() + self.servicelist.instance.position().x(), 1280*sf)
+		sely = min(self.servicelist.instance.position().y() + (self.servicelist.ItemHeight * indx), 720*sf)
+		posx = max(self.instance.position().x() + selx - self.ChoiceBoxDialog.instance.size().width() - 20*sf, 0)
+		posy = self.instance.position().y() + sely
+		posy += self.servicelist.ItemHeight - 2*sf
+		if posy + self.ChoiceBoxDialog.instance.size().height() > 720*sf:
+			posy -= self.servicelist.ItemHeight - 4*sf + self.ChoiceBoxDialog.instance.size().height()
+		self.ChoiceBoxDialog.instance.move(ePoint(int(posx), int(posy)))
 
 	def finishedAdd(self, answer):
 		# print "finished add"

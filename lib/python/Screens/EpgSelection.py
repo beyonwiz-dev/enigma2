@@ -8,7 +8,7 @@ from Components.About import about
 from Components.ActionMap import HelpableActionMap, HelpableNumberActionMap
 from Components.Button import Button
 from Components.config import config, configfile, ConfigClock
-from Components.EpgList import EPGList, EPGBouquetList, TimelineText, EPG_TYPE_SINGLE, EPG_TYPE_SIMILAR, EPG_TYPE_MULTI, EPG_TYPE_ENHANCED, EPG_TYPE_INFOBAR, EPG_TYPE_INFOBARGRAPH, EPG_TYPE_GRAPH, EPG_TYPE_VERTICAL, MAX_TIMELINES
+from Components.EpgList import EPGList, EPGBouquetList, TimelineText, EPG_TYPE_SINGLE, EPG_TYPE_SIMILAR, EPG_TYPE_MULTI, EPG_TYPE_ENHANCED, EPG_TYPE_INFOBAR, EPG_TYPE_INFOBARGRAPH, EPG_TYPE_GRAPH, EPG_TYPE_VERTICAL, MAX_TIMELINES, getScreenFactor
 from Components.MenuList import MenuList
 from Components.Label import Label
 from Components.Pixmap import Pixmap
@@ -1501,21 +1501,28 @@ class EPGSelection(Screen, HelpableScreen):
 			title = _("Select action for timer %s:") % event.getEventName()
 		else:
 			if not manual:
-				menu = [(_("Add Timer"), 'CALLFUNC', self.ChoiceBoxCB, self.doRecordTimer), (_("Add AutoTimer"), 'CALLFUNC', self.ChoiceBoxCB, self.addAutoTimerSilent)]
+				cb_func1 = lambda ret: self.doRecordTimer(True)
+				menu = [(_("Add Record Timer"), 'CALLFUNC', self.RemoveChoiceBoxCB, cb_func1), 
+						(_("Add Zap Timer"), 'CALLFUNC', self.ChoiceBoxCB, self.doZapTimer),
+						(_("Add Zap+Record Timer"), 'CALLFUNC', self.ChoiceBoxCB, self.doZapRecordTimer),
+						(_("Add AutoTimer"), 'CALLFUNC', self.ChoiceBoxCB, self.addAutoTimerSilent)
+						]
 				title = "%s?" % event.getEventName()
 			else:
 				newEntry = RecordTimerEntry(serviceref, checkOldTimers=True, dirname=preferredTimerPath(), *parseEvent(event))
 				self.session.openWithCallback(self.finishedAdd, TimerEntry, newEntry)
 
 		if title:
-			self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, title=title, list=menu, keys=['green', 'blue'], skin_name="RecordTimerQuestion")
+			self.ChoiceBoxDialog = self.session.instantiateDialog(ChoiceBox, title=title, list=menu, keys=['red', 'green', 'yellow', 'blue'], skin_name="RecordTimerQuestion")
 			serviceref = eServiceReference(str(self['list'+str(self.activeList)].getCurrent()[1]))
 			pos = self['list'+str(self.activeList)].getSelectionPosition(serviceref, self.activeList)
-			posx = pos[0]
-			dialogwidth = self.ChoiceBoxDialog.instance.size().width()
-			if posx - dialogwidth < 0:
-				posx = dialogwidth
-			self.ChoiceBoxDialog.instance.move(ePoint(posx-dialogwidth,self.instance.position().y()+pos[1]))
+			sf = getScreenFactor()
+			posx = max(self.instance.position().x() + pos[0] - self.ChoiceBoxDialog.instance.size().width() - 20*sf, 0)
+			posy = self.instance.position().y() + pos[1]
+			posy += self['list'+str(self.activeList)].itemHeight - 2*sf
+			if posy + self.ChoiceBoxDialog.instance.size().height() > 720*sf:
+				posy -= self['list'+str(self.activeList)].itemHeight - 4*sf + self.ChoiceBoxDialog.instance.size().height()
+			self.ChoiceBoxDialog.instance.move(ePoint(int(posx), int(posy)))
 			self.showChoiceBoxDialog()
 
 	def recButtonPressed(self):
@@ -1570,13 +1577,19 @@ class EPGSelection(Screen, HelpableScreen):
 		if self.has_key('input_actions'):
 			self['input_actions'].setEnabled(True)
 
-	def doRecordTimer(self):
-		self.doInstantTimer(TIMERTYPE.JUSTPLAY)
+	def doRecordTimer(self, rec=False):
+		if not rec and 'Plugins.Extensions.EPGSearch.EPGSearch.EPGSearch' in `self`:
+			self.RecordTimerQuestion()
+		else:
+			self.doInstantTimer(0, 0)
 
 	def doZapTimer(self):
-		self.doInstantTimer(1)
+		self.doInstantTimer(1, 0)
 
-	def doInstantTimer(self, zap):
+	def doZapRecordTimer(self):
+		self.doInstantTimer(0, 1)
+
+	def doInstantTimer(self, zap, zaprecord):
 		cur = self['list'+str(self.activeList)].getCurrent()
 		event = cur[0]
 		serviceref = cur[1]
@@ -1585,7 +1598,7 @@ class EPGSelection(Screen, HelpableScreen):
 		eventid = event.getEventId()
 		refstr = serviceref.ref.toString()
 		newEntry = RecordTimerEntry(serviceref, checkOldTimers=True, *parseEvent(event))
-		self.InstantRecordDialog = self.session.instantiateDialog(InstantRecordTimerEntry, newEntry, zap)
+		self.InstantRecordDialog = self.session.instantiateDialog(InstantRecordTimerEntry, newEntry, zap, zaprecord)
 		retval = [True, self.InstantRecordDialog.retval()]
 		self.session.deleteDialogWithCallback(self.finishedAdd, self.InstantRecordDialog, retval)
 
