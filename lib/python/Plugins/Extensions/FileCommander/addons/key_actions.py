@@ -267,16 +267,25 @@ class key_actions(stat_info):
 		longname = sourceDir + filename
 		self.commando = (longname,)
 		self.parameter = ''
-		if dirtarget is not None:
-			self.parameter  = dirtarget.getFilename()
-		stxt = 'shell'
-		if self.commando[0].endswith('.py'):
-			stxt = 'python'
+		targetdir = dirtarget.getCurrentDirectory()
+		if targetdir is not None:
+			file = dirtarget.getFilename() or ''
+			if file.startswith(targetdir):
+				self.parameter = file
+			elif not targetdir.startswith(file):
+				self.parameter = targetdir + file
+			else:
+				self.parameter = targetdir
+		stxt = _('python')
+		if self.commando[0].endswith('.sh'):
+			stxt = _('shell')
 		askList = [(_("Cancel"), "NO"), (_("View or edit this %s script") %stxt, "VIEW"), (_("Run script"), "YES")]
+		if self.commando[0].endswith('.pyo'):
+			askList.remove((_("View or edit this %s script") %stxt, "VIEW"))
 		if self.parameter:
 			askList.append((_("Run script with optional parameter"), "PAR"))
 			filename += _('\noptional parameter:\n%s') %self.parameter
-		self.session.openWithCallback(self.do_run_script, ChoiceBox, title=_("Do you want to view or run the script?\n" + filename), list=askList)
+		self.session.openWithCallback(self.do_run_script, ChoiceBox, title=_("Do you want to view or run the script?\n") + filename, list=askList)
 
 	def do_run_script(self, answer):
 		answer = answer and answer[1]
@@ -299,7 +308,8 @@ class key_actions(stat_info):
 			except OSError as oe:
 				self.session.open(MessageBox, _("%s: %s") % (self.commando[0], oe.strerror), type=MessageBox.TYPE_ERROR)
 				return
-			if (yfile.st_size < 61440):
+			#if (yfile.st_size < 61440):
+			if (yfile.st_size < 1000000):
 				self.session.open(vEditor, self.commando[0])
 
 	def run_file(self):
@@ -434,6 +444,7 @@ class key_actions(stat_info):
 		toRun = []
 		for prog in progs:
 			toRun += [("echo", "-n", prog[0] + ": "), (prog[1], filepath)]
+		toRun += [("echo", ""),] # add blanc line
 		self.session.open(Console, cmdlist=toRun)
 
 	def play_music(self, dirsource):
@@ -545,7 +556,7 @@ class key_actions(stat_info):
 					self.SOURCELIST.getCurrentDirectory(),
 					filename
 				)
-		elif filetype in (".sh", ".py"):
+		elif filetype in (".sh", ".py", ".pyo"):
 			self.run_script(self.SOURCELIST, self.TARGETLIST)
 		elif filetype in TEXT_EXTENSIONS or config.plugins.filecommander.unknown_extension_as_text.value:
 			try:
