@@ -12,7 +12,7 @@ from Screens.Screen import Screen
 from Components.Console import Console
 from Tools.BoundFunction import boundFunction
 from Tools.Multiboot import GetImagelist, GetCurrentImage, GetCurrentImageMode, GetCurrentKern, GetCurrentRoot, GetBoxName
-from enigma import eTimer
+from enigma import eTimer, fbClass
 import os, urllib2, shutil, math, time, zipfile, shutil
 
 
@@ -182,7 +182,7 @@ class FlashOnline(Screen):
 			self["key_green"].setText("")
 		else:
 			if currentSelected[0][1] == "Expander":
-				self["key_green"].setText(_("Compress") if currentSelected[0][0] in self.expanded else _("Expand"))
+				self["key_green"].setText(_("Collapse") if currentSelected[0][0] in self.expanded else _("Expand"))
 				self["description"].setText("")
 			else:
 				self["key_green"].setText(_("Flash Image"))
@@ -520,10 +520,12 @@ class FlashImage(Screen):
 				command = "/usr/bin/ofgwrite -r -k %s" % imagefiles
 			self.containerofgwrite = Console()
 			self.containerofgwrite.ePopen(command, self.FlashimageDone)
+			fbClass.getInstance().lock()
 		else:
 			self.session.openWithCallback(self.abort, MessageBox, _("Image to install is invalid\n%s") % self.imagename, type=MessageBox.TYPE_ERROR, simple=True)
 
 	def FlashimageDone(self, data, retval, extra_args):
+		fbClass.getInstance().unlock()
 		self.containerofgwrite = None
 		if retval == 0:
 			self["header"].setText(_("Flashing image successful"))
@@ -539,6 +541,7 @@ class FlashImage(Screen):
 		self.close()
 
 	def ok(self):
+		fbClass.getInstance().unlock()
 		if self["header"].text == _("Flashing image successful"):
 			self.close()
 		else:
