@@ -150,7 +150,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 </code>
 				</item>
 			</menu>
-			<item weight="300" level="0" entryID="epg_setup"><setup id="epgsettings" /></item>
+			<item weight="300" level="0" text="Setup" entryID="epg_setup"><setup id="epgsettings" /></item>
 		</menu>
 
 		<!-- Menu / Settings / Service Searching -->
@@ -158,7 +158,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 			<id val="scan" />
 			<item weight="0" level="1" text="Basic settings" requires="USETunersetup" entryID="tuner_setup"><screen module="Satconfig" screen="TunerSetup" /></item>
 			<item weight="1" level="0" text="Tuner configuration" entryID="tuner_setup"><screen module="Satconfig" screen="NimSelection" /></item>
-			<item weight="5" level="0" text="Automatic scan" entryID="auto_scan"><screen module="ScanSetup" screen="ScanSimple" /></item>
+			<item weight="5" level="0" text="Automatic Scan" entryID="auto_scan"><screen module="ScanSetup" screen="ScanSimple" /></item>
 			<item weight="10" level="0" text="Manual scan" entryID="manual_scan"><screen module="ScanSetup" /></item>
 		</menu>
 
@@ -193,6 +193,7 @@ self.session.openWithCallback(msgClosed, EpgDeleteMsg)
 				<id val="network" />
 				<item weight="0" level="0" text="Device Setup" entryID="device_setup"><screen module="NetworkSetup" screen="NetworkAdapterSelection"/></item>
 				<item weight="5" level="1" text="Mounts Setup" entryID="netmounts_setup"><screen module="NetworkSetup" screen="NetworkMountsMenu"/></item>
+				<item weight="8"  level="2" text="Password Setup" entryID="password_setup"><screen module="NetworkSetup" screen="NetworkPassword"/></item>
 				<item weight="10" level="2" text="AFP Setup" entryID="netafp_setup"><screen module="NetworkSetup" screen="NetworkAfp"/></item>
 				<item weight="15" level="2" text="CIFS/Samba Setup" entryID="netsmba_setup"><screen module="NetworkSetup" screen="NetworkSamba"/></item>
 				<item weight="20" level="2" text="FTP Setup" entryID="netftp_setup"><screen module="NetworkSetup" screen="NetworkFtp"/></item>
@@ -226,9 +227,6 @@ def msgClosed(ret):
 		print"[FACTORY RESET] set network to DHCP"
 		system("cp -f /usr/share/enigma2/defaults/interfaces /etc/network/interfaces")
 		system("/etc/init.d/networking restart")
-		if path.exists("/etc/defaultsat.tar.gz"):
-			system("mkdir /etc/enigma2")
-			system("tar -xzf /etc/defaultsat.tar.gz -C /etc/enigma2")
 		_exit(0)
 self.session.openWithCallback(msgClosed, FactoryReset)
 </code>

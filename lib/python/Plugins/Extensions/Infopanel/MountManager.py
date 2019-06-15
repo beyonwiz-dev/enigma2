@@ -101,7 +101,7 @@ class HddMount(Screen):
 			device = parts[3]
 			if not search('sd[a-z][1-9]',device) and not search('mmcblk[0-9]p[1-9]',device):
 				continue
-			if getMachineBuild() in ('gbmv200','h9combo','v8plus','hd60','hd61','vuduo4k','ustym4kpro','beyonwizv2','viper4k','sf8008','cc1','dags72604','u51','u52','u53','u54','u56','vuzero4k','u5','sf5008','et13000','et1x000','vuuno4k','vuuno4kse', 'vuultimo4k', 'vusolo4k', 'hd51', 'hd52', 'dm820', 'dm7080', 'sf4008', 'dm900', 'dm920', 'gb7252', 'dags7252', 'vs1500','h7','8100s') and search('mmcblk0p[1-9]',device):
+			if getMachineBuild() in ('gbmv200','h9combo','h10','v8plus','hd60','hd61','vuduo4k','ustym4kpro','beyonwizv2','viper4k','sf8008','cc1','dags72604','u51','u52','u53','u54','u56','vuzero4k','u5','sf5008','et13000','et1x000','vuuno4k','vuuno4kse', 'vuultimo4k', 'vusolo4k', 'hd51', 'hd52', 'dm820', 'dm7080', 'sf4008', 'dm900', 'dm920', 'gb7252', 'dags7252', 'vs1500','h7','8100s') and search('mmcblk0p[1-9]',device):
 				continue
 			if getMachineBuild() in ('xc7439','osmio4k','osmio4kplus') and search('mmcblk1p[1-9]',device):
 				continue
@@ -201,11 +201,17 @@ class HddMount(Screen):
 		name = 'USB: '
 		mypixmap = '/usr/lib/enigma2/python/Plugins/Extensions/Infopanel/icons/dev_usbstick.png'
 		if device2.startswith('mmcblk'):
-			model = file('/sys/block/' + device2 + '/device/name').read()
+			try:
+				model = file('/sys/block/' + device2 + '/device/name').read()
+			except:
+				model = ''
 			mypixmap = '/usr/lib/enigma2/python/Plugins/Extensions/Infopanel/icons/dev_mmc.png'
 			name = 'MMC: '
 		else:
-			model = file('/sys/block/' + device2 + '/device/model').read()
+			try:
+				model = file('/sys/block/' + device2 + '/device/model').read()
+			except:
+				model = ''
 		model = str(model).replace('\n', '')
 		des = ''
 		if devicetype.find('/devices/pci') != -1 or devicetype.find('ahci') != -1:
@@ -411,7 +417,7 @@ class DevicePanelConf(Screen, ConfigListScreen):
 			device = parts[3]
 			if not search('sd[a-z][1-9]',device) and not search('mmcblk[0-9]p[1-9]',device):
 				continue
-			if getMachineBuild() in ('gbmv200','multibox','h9combo','v8plus','hd60','hd61','vuduo4k','ustym4kpro','beyonwizv2','viper4k','sf8008','cc1','dags72604','u51','u52','u53','u54','u56','vuzero4k','u5','sf5008','et13000','et1x000','vuuno4k','vuuno4kse', 'vuultimo4k', 'vusolo4k', 'hd51', 'hd52', 'dm820', 'dm7080', 'sf4008', 'dm900', 'dm920', 'gb7252', 'dags7252', 'vs1500','h7','8100s') and search('mmcblk0p[1-9]',device):
+			if getMachineBuild() in ('gbmv200','multibox','h9combo','h10','v8plus','hd60','hd61','vuduo4k','ustym4kpro','beyonwizv2','viper4k','sf8008','cc1','dags72604','u51','u52','u53','u54','u56','vuzero4k','u5','sf5008','et13000','et1x000','vuuno4k','vuuno4kse', 'vuultimo4k', 'vusolo4k', 'hd51', 'hd52', 'dm820', 'dm7080', 'sf4008', 'dm900', 'dm920', 'gb7252', 'dags7252', 'vs1500','h7','8100s') and search('mmcblk0p[1-9]',device):
 				continue
 			if getMachineBuild() in ('xc7439','osmio4k','osmio4kplus') and search('mmcblk1p[1-9]',device):
 				continue
