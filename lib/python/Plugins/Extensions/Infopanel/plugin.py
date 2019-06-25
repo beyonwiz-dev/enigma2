@@ -64,6 +64,8 @@ def Check_SysSoftcam():
 				syscam = os.readlink('/etc/init.d/softcam').rsplit('.', 1)[1]
 				if syscam.lower().startswith('oscam'):
 					syscam="oscam"
+				if syscam.lower().startswith('ncam'):
+					syscam="ncam"
 				if syscam.lower().startswith('cccam'):
 					syscam="cccam"
 			except:
@@ -317,6 +319,8 @@ class Infopanel(Screen, InfoBarPiP, ProtectedScreen):
 			self.Mlist.append(MenuEntryItem((InfoEntryComponent('SoftcamSetup'), _("Softcam-Setup"), 'SoftcamSetup')))
 		if Check_SysSoftcam() is "oscam":
 			self.Mlist.append(MenuEntryItem((InfoEntryComponent('OScamInfo'), _("OScamInfo"), 'OScamInfo')))
+		if Check_SysSoftcam() is "ncam":
+			self.Mlist.append(MenuEntryItem((InfoEntryComponent('OScamInfo'), _("NcamInfo"), 'OScamInfo')))
 		#self.Mlist.append(MenuEntryItem((InfoEntryComponent ("SoftwareManager" ), _("Software update"), ("software-update"))))
 		self.Mlist.append(MenuEntryItem((InfoEntryComponent ("SoftwareManager" ), _("Software Manager"), ("software-manager"))))
 		self.Mlist.append(MenuEntryItem((InfoEntryComponent('KeymapSel'), _("Keymap Selection"), 'KeymapSel')))	
@@ -404,7 +408,7 @@ class Infopanel(Screen, InfoBarPiP, ProtectedScreen):
 			self["Mlist"].moveToIndex(0)
 			self["Mlist"].l.setList(self.oldmlist1)
 			menu = 1
-			self["label1"].setText("Infos")
+			self["label1"].setText(_("Infos"))
 		else:
 			pass
 
@@ -775,7 +779,7 @@ class Info(Screen):
 
 	def InfoPanel(self):
 		try:
-			self["label2"].setText("INFO")
+			self["label2"].setText(_("INFO"))
 			info1 = self.Do_cmd("cat", "/etc/motd", None)
 			if info1.find('wElc0me') > -1:
 				info1 = info1[info1.find('wElc0me'):len(info1)] + "\n"
@@ -800,7 +804,7 @@ class Info(Screen):
 	def ImageVersion(self):
 		try:
 			self["label2"].setText(_("Image Version"))
-			now = datetime.now()
+			now = datetime.datetime.now()
 			info1 = 'Date = ' + now.strftime("%d-%B-%Y") + "\n"
 			info2 = 'Time = ' + now.strftime("%H:%M:%S") + "\n"
 			info3 = self.Do_cmd("uptime", None, None)
