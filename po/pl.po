@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenATV\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-24 17:04+0000\n"
+"POT-Creation-Date: 2019-07-07 10:53+0000\n"
 "PO-Revision-Date: 2019-02-18 16:26+0100\n"
 "Last-Translator: djpimpek <pimpek22@o2.pl>\n"
 "Language-Team: Poland <Mariusz1970@onet.eu>\n"
@@ -440,6 +440,10 @@ msgstr ""
 
 #, python-format
 msgid "%02d:%02d - %02d:%02d"
+msgstr ""
+
+#, python-format
+msgid "%03d MB"
 msgstr ""
 
 #, python-format
@@ -1008,6 +1012,10 @@ msgid "%d-%b-%Y"
 msgstr ""
 
 msgid "%d-%m"
+msgstr ""
+
+#, python-format
+msgid "%d.%03d GB"
 msgstr ""
 
 msgid "%d.%B %Y"
@@ -2313,7 +2321,7 @@ msgid "Advanced Settings"
 msgstr "Ustawienia zaawansowane"
 
 msgid "Advanced options"
-msgstr "Opcje zaawansowane"
+msgstr "Opcje Zaawansowane"
 
 msgid "Advanced restore"
 msgstr "Zaawansowane Odzyskiwanie"
@@ -3079,7 +3087,7 @@ msgid "Backup settings"
 msgstr "Kopia Ustawień"
 
 msgid "Backup system settings"
-msgstr "Kopia ustawień systemowych"
+msgstr "Kopia Ustawień Systemowych"
 
 #, fuzzy, python-format
 msgid "Backup to destination: %s"
@@ -3133,7 +3141,7 @@ msgid "Base transparency for teletext, more options available within teletext sc
 msgstr "Podstawa przejrzystości dla teletekstu, więcej opcji dostępnych na ekranie teletekstu."
 
 msgid "Basic settings"
-msgstr "Ustawienia podstawowe"
+msgstr "Ustawienia Podstawowe"
 
 msgid "Basque"
 msgstr "Baskijski"
@@ -3431,7 +3439,7 @@ msgid "CI (Common Interface) Setup"
 msgstr ""
 
 msgid "CI Basic settings"
-msgstr "Ustawienia podstawowe"
+msgstr "Ustawienia Podstawowe"
 
 msgid "CI Legacy"
 msgstr ""
@@ -3771,7 +3779,7 @@ msgid "Channel selection configuration"
 msgstr "Konfiguracja wyboru kanału"
 
 msgid "Channel selection settings"
-msgstr "Ustawienia wyboru kanału"
+msgstr "Ustawienia Wyboru Kanału"
 
 msgid "Channel up"
 msgstr "Kanał wyżej"
@@ -3812,7 +3820,7 @@ msgstr "Rozdział:"
 
 #, fuzzy
 msgid "Character device"
-msgstr "Urządzenia pamięci masowej"
+msgstr "Urządzenia Pamięci Masowej"
 
 msgid "Check"
 msgstr "Sprawdź"
@@ -4453,7 +4461,11 @@ msgid "Configure the width of the TrueType font letters used for teletext."
 msgstr "Skonfiguruj szerokość liter czcionek TrueType używanych do telegazety."
 
 msgid "Configure this tuner using simple or advanced options, or loop it through to another tuner, or copy a configuration from another tuner, or disable it."
-msgstr ""
+msgstr "Skonfiguruj ten tuner za pomocą prostych lub zaawansowanych opcji lub zapętl go przez inny tuner lub skopiuj konfigurację z innego tunera lub wyłącz go."
+
+#, fuzzy
+msgid "Configure to show channel names, numbers, picons or all three inside EPG."
+msgstr "Skonfiguruj, aby wyświetlać nazwy kanałów, numery, pikony lub wszystkie trzy wewnątrz EPG."
 
 msgid "Configure to show the channel names, picons, or both in the EPG."
 msgstr "Skonfiguruj wyświetlanie nazwy kanałów, pikon, zarówno w EPG."
@@ -4462,13 +4474,13 @@ msgid "Configure whether a bold TrueType font is used for teletext."
 msgstr "Skonfiguruj użycie pogrubionej czcionki TrueType dla telegazety."
 
 msgid "Configure whether a fixed font or a scalable TrueType font is used for teletext."
-msgstr ""
+msgstr "Skonfiguruj, czy do teletekstu używana jest stała czcionka lub skalowalna czcionka TrueType."
 
 msgid "Configure whether another tuner from the preferred list is allocated for recordings instead of sharing a tuner that is already active receiving the same live TV channel."
-msgstr ""
+msgstr "Skonfiguruj, czy inny tuner z preferowanej listy jest przydzielany do nagrań zamiast dzielić tuner, który jest już aktywny, odbierając ten sam kanał telewizyjny na żywo."
 
 msgid "Configure whether another tuner from the preferred list is allocated instead of sharing a tuner that is already active recording the same channel."
-msgstr ""
+msgstr "Skonfiguruj, czy inny tuner z preferowanej listy jest przydzielany zamiast dzielić tuner, który jest już aktywny, nagrywając ten sam kanał."
 
 msgid "Configure whether multi channel sound tracks should be downmixed to stereo."
 msgstr "Wybierz, czy wielokanałowe ścieżki dźwiękowe powinny być przystosowywane do stereo."
@@ -4712,10 +4724,10 @@ msgid "Cpu"
 msgstr "Procesor"
 
 msgid "Crash Logs"
-msgstr "Ustawienia crash loga"
+msgstr "Ustawienia crash Loga"
 
 msgid "Crash at skin error for debug reasons ?"
-msgstr ""
+msgstr "Awaria przy błędzie skóry z powodów debugowania ?"
 
 msgid "Create"
 msgstr "Utworzyć"
@@ -5105,7 +5117,7 @@ msgid "Debug Logs"
 msgstr "Logi Diagnostyczne"
 
 msgid "Decryption & Parental Control"
-msgstr "Moduł & Kontrola rodzicielska"
+msgstr "Moduł & Kontrola Rodzicielska"
 
 msgid "Deep Standby"
 msgstr "Głębokie Czuwanie"
@@ -5466,8 +5478,8 @@ msgstr "Cyfrowe usunięcie konturu"
 msgid "Dim delay"
 msgstr "Przygaś ekran po"
 
-msgid "Dim the LCD after specified time."
-msgstr "Przygaś wyświetlacz LCD po ustalonym czasie."
+msgid "Dim the LCD to the level from 'Brightness (Dimmed)' after specified time."
+msgstr "Przyciemnij wyświetlacz LCD do poziomu z „Jasność (przyciemniona)” po określonym czasie."
 
 msgid "Direct playback of linked titles without menu"
 msgstr "Bezpośrednie odtwarzanie tytułów powiązanych bez menu"
@@ -6504,7 +6516,6 @@ msgstr "Widok Wydarzenia"
 msgid "Eventview menu"
 msgstr "Menu Widoku Wydarzenia"
 
-#, fuzzy
 msgid "Eventview:"
 msgstr "Widok Wydarzenia"
 
@@ -6521,13 +6532,13 @@ msgid "Exceeds dual layer medium!"
 msgstr "Przekroczona pojemność dwuwarstwowego nośnika!"
 
 msgid "Execute after current event"
-msgstr ""
+msgstr "Wykonaj po bieżącym zdarzeniu"
 
 msgid "Execute in "
-msgstr ""
+msgstr "Wykonaj po"
 
 msgid "Execution condition"
-msgstr ""
+msgstr "Warunek wykonania"
 
 msgid "Execution finished!!"
 msgstr "Wykonywanie zakończone!!"
@@ -6545,7 +6556,7 @@ msgid "Exit EPG"
 msgstr "Wyjdź z EPG"
 
 msgid "Exit MAC-address configuration"
-msgstr ""
+msgstr "Zamknij konfigurację adresu MAC"
 
 msgid "Exit Quad Channel Selection"
 msgstr "Wyjście z Wyboru Kanałów Quad"
@@ -6635,7 +6646,7 @@ msgid "Extended network setup plugin..."
 msgstr "Wtyczka do zaawansowanych ustawień sieci..."
 
 msgid "Extended settings"
-msgstr "Ustawienia rozszerzone"
+msgstr "Ustawienia Rozszerzone"
 
 msgid "Extended setup..."
 msgstr "Rozszerzona konfiguracja..."
@@ -6663,10 +6674,10 @@ msgid "External subtitle color"
 msgstr "Zewnętrzny kolor napisów"
 
 msgid "External subtitle dialog colorisation"
-msgstr ""
+msgstr "Kolorowanie okna dialogowego napisów zewnętrznych"
 
 msgid "External subtitle switch fonts"
-msgstr ""
+msgstr "Zewnętrzne czcionki przełączania napisów"
 
 msgid "Extra motor options"
 msgstr "Dodatkowe opcje obrotnicy"
@@ -6730,7 +6741,7 @@ msgid "FTP Setup"
 msgstr "Ustawienia FTP"
 
 msgid "Factory reset"
-msgstr "Przywracanie ustawień fabrycznych"
+msgstr "Przywracanie Ustawień Fabrycznych"
 
 msgid "Fade the Infobar on hide"
 msgstr "Wygaszanie paska info.w skórze"
@@ -7099,10 +7110,6 @@ msgstr ""
 
 msgid "Front USB 3.0"
 msgstr ""
-
-#, python-format
-msgid "Frontprocessor version: %d"
-msgstr "Wersja frontprocesora: %d"
 
 #, python-format
 msgid "Frontprocessor version: %s"
@@ -8112,7 +8119,7 @@ msgid "Input config file name:"
 msgstr "Nazwa pliku konfiguracyjnego:"
 
 msgid "Input devices"
-msgstr "Urządzenia wejściowe"
+msgstr "Urządzenia Wejściowe"
 
 msgid "Insert"
 msgstr ""
@@ -8156,7 +8163,7 @@ msgid "Install lcd picons on"
 msgstr "Instaluj pikony lcd w"
 
 msgid "Install local extension"
-msgstr "Instaluj lokalny pakiet"
+msgstr "Instaluj Lokalny Pakiet"
 
 msgid "Install or remove finished."
 msgstr "Instalowanie lub usuwanie zakończone."
@@ -8935,7 +8942,7 @@ msgid "Manual configuration"
 msgstr "Konfiguracja ręczna"
 
 msgid "Manual scan"
-msgstr "Skanowanie ręczne"
+msgstr "Skanowanie Ręczne"
 
 msgid "Manual scan for services"
 msgstr "Ręczne skanowanie kanałów"
@@ -9928,12 +9935,11 @@ msgstr "Nie, nigdy"
 msgid "No, scan later manually"
 msgstr "Nie, zeskanuje ręcznie później"
 
-#, fuzzy
 msgid "No, show always the plugin browser"
-msgstr "Pokaż przeglądarkę wtyczek."
+msgstr "Nie, pokaż zawsze przeglądarkę wtyczek"
 
 msgid "No, show always the timer list"
-msgstr ""
+msgstr "Nie, pokaż zawsze listę timerów"
 
 msgid "NodeID"
 msgstr "Węzeł ID"
@@ -10519,7 +10525,7 @@ msgid "Parent directory"
 msgstr "Katalog nadrzędny"
 
 msgid "Parental control"
-msgstr "Kontrola rodzicielska"
+msgstr "Kontrola Rodzicielska"
 
 msgid "Parental control services editor"
 msgstr "Edytor kanałów objętych kontrolę rodzicielską"
@@ -11086,9 +11092,6 @@ msgstr "Przeglądarka Wtyczek"
 msgid "Plugin Filter"
 msgstr "Filtr Wtyczek"
 
-msgid "Plugin Filter..."
-msgstr "Filtr Wtyczek..."
-
 msgid "Plugin browser"
 msgstr "Przeglądarka wtyczek"
 
@@ -11171,7 +11174,7 @@ msgid "Positioner Setup Log"
 msgstr "Log Konfiguracji pozycjonera"
 
 msgid "Positioner setup"
-msgstr "Ustawienia pozycjonera"
+msgstr "Ustawienia Pozycjonera"
 
 msgid "Power"
 msgstr "Zasilanie"
@@ -11183,7 +11186,7 @@ msgid "Power LED State in Standby"
 msgstr "Stan LED od zasilania podczas czuwania"
 
 msgid "Power LED can be turned on or off here."
-msgstr ""
+msgstr "Tutaj można włączyć lub wyłączyć diodę zasilania."
 
 msgid "Power LED state during deep-standby."
 msgstr "Stan LED od zasilania podczas głębokiego czuwania."
@@ -11198,13 +11201,13 @@ msgid "Power long"
 msgstr "Przycisk zasilania długo"
 
 msgid "Power management. Consult your receiver's manual for more information."
-msgstr ""
+msgstr "Zarządzanie energią. Więcej informacji można znaleźć w instrukcji obsługi odbiornika."
 
 msgid "Power threshold in mA"
 msgstr "Wartość progowa mocy w mA"
 
 msgid "Power threshold. Consult your receiver's manual for more information."
-msgstr ""
+msgstr "Próg mocy. Więcej informacji można znaleźć w instrukcji obsługi odbiornika."
 
 msgid "PowerManager entry"
 msgstr "PowerMenadżer Wpis"
@@ -11372,7 +11375,7 @@ msgid "Primary DNS"
 msgstr "Pierwszy DNS"
 
 msgid "Primetime"
-msgstr ""
+msgstr "Godziny największej oglądalności"
 
 msgid "Primetime hour"
 msgstr "Podstawowa godzina czasu"
@@ -11384,7 +11387,7 @@ msgid "Priority"
 msgstr "Priorytet konwertera"
 
 msgid "Probable causes could be"
-msgstr ""
+msgstr "Prawdopodobne przyczyny mogą być"
 
 msgid "Process"
 msgstr "Proces"
@@ -11715,6 +11718,9 @@ msgstr "Nagrywanie"
 msgid "Rec long"
 msgstr "Rec długi"
 
+msgid "Reception"
+msgstr "Wyszukiwanie Kanałów"
+
 msgid "Reception Settings"
 msgstr "Ustawienia Odbioru"
 
@@ -11728,7 +11734,7 @@ msgid "Record"
 msgstr "Nagrywanie"
 
 msgid "Record - same as record button"
-msgstr ""
+msgstr "Nagraj - taki sam jak przycisk nagrywania"
 
 msgid "Record next"
 msgstr "Następne nagranie"
@@ -11812,7 +11818,7 @@ msgid "Red long"
 msgstr "Czerwony długi"
 
 msgid "Reduce the size of the service picons for more line spacing between them."
-msgstr ""
+msgstr "Zmniejsz rozmiar pikonów serwisowych, aby uzyskać więcej odstępów między nimi."
 
 msgid "Reduce time scale"
 msgstr "Redukcja skali czasu"
@@ -11837,7 +11843,7 @@ msgid "Refresh rate"
 msgstr "Częstotliwość odświeżania"
 
 msgid "Refresh rate for 'Lowest Mode'"
-msgstr ""
+msgstr "Częstotliwość odświeżania dla 'trybu najniższego'"
 
 msgid "Refresh rate selection."
 msgstr "Wybór częstotliwości odświeżania."
@@ -13520,7 +13526,7 @@ msgid "Setup the interval to check for online updates. (in hours)"
 msgstr "Ustawienie przedziału czasu aktualizacji online. (w godzinach)"
 
 msgid "Setup tuner(s)"
-msgstr "Konfiguracja tunera(ów)"
+msgstr "Konfiguracja Tunera(ów)"
 
 msgid "Setup uShare"
 msgstr "Ustawienia uShare"
@@ -13843,7 +13849,7 @@ msgid "Show Transponder Remaining/Elapsed as"
 msgstr "Pokaż Transponder Pozostały/Upływający jako"
 
 msgid "Show True/False as graphical switch"
-msgstr ""
+msgstr "Pokaż True/False jako przełącznik graficzny"
 
 msgid "Show VCR scart on main menu"
 msgstr "Pokaż VCR SCART w menu głównym"
@@ -13854,9 +13860,8 @@ msgstr "Pokaż Pionowy EPG"
 msgid "Show WLAN status"
 msgstr "Pokaż status WLAN"
 
-#, fuzzy
 msgid "Show additional slider value"
-msgstr "Pokaż animację, gdy zajęty"
+msgstr "Pokaż dodatkową wartość suwaka"
 
 msgid "Show advanced settings"
 msgstr "Pokaż ustawienia zaawansowane"
@@ -13865,11 +13870,11 @@ msgid "Show animation while busy"
 msgstr "Pokaż animację, gdy zajęty"
 
 msgid "Show as Picture (press any key to close)"
-msgstr ""
+msgstr "Pokaż jako obraz (naciśnij dowolny klawisz, aby zamknąć)"
 
 #, python-format
 msgid "Show as Picture and save as file ('%s')"
-msgstr ""
+msgstr "Pokaż jako obraz i zapisz jako plik ('%s')"
 
 msgid "Show background in Radio Mode"
 msgstr "Pokaż tapetę w Trybie Radio"
@@ -14124,10 +14129,10 @@ msgid "Show status icons in movielist"
 msgstr "Pokaż ikony statusu na liście filmów"
 
 msgid "Show status messages when switch to live TV"
-msgstr ""
+msgstr "Pokaż komunikaty o stanie po przełączeniu na telewizję na żywo"
 
 msgid "Show subservice selection"
-msgstr ""
+msgstr "Pokaż wybór podsieci"
 
 msgid "Show subtitle quick menu"
 msgstr "Menu Podręczne Napisów"
@@ -14511,7 +14516,7 @@ msgid "Software manager setup"
 msgstr "Menadżer oprogramowania - ustawienia"
 
 msgid "Software restore"
-msgstr "Przywracanie oprogramowania"
+msgstr "Przywracanie Oprogramowania"
 
 msgid "Software update"
 msgstr "Aktualizacja Oprogramowania"
@@ -14924,7 +14929,7 @@ msgstr "Podserwisy..."
 
 #, fuzzy
 msgid "Subservice mode (green Button)"
-msgstr "Tryb podserwisów"
+msgstr "Tryb podserwisowy (zielony przycisk)"
 
 msgid "Subservices"
 msgstr "Podserwisy"
@@ -16177,7 +16182,7 @@ msgid "Time scale"
 msgstr "Skala czasu"
 
 msgid "Time settings"
-msgstr "Ustawienia czasu"
+msgstr "Ustawienia Czasu"
 
 #, fuzzy
 msgid "Time style"
@@ -16191,7 +16196,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Time zone settings"
-msgstr "Ustawienia czasu"
+msgstr "Ustawienia Czasu"
 
 msgid "Timeline 24 Hour"
 msgstr "Oś czasu 24 godziny"
@@ -16553,7 +16558,7 @@ msgid "Tuner Setup"
 msgstr "Ustawienie Tunera"
 
 msgid "Tuner configuration"
-msgstr "Konfiguracja tunera"
+msgstr "Konfiguracja Tunera"
 
 msgid "Tuner is not supported"
 msgstr "Tuner nie obsługiwany"
@@ -16588,9 +16593,6 @@ msgstr "Status tunera NIEZNANY"
 #, python-format
 msgid "Tuner type %s"
 msgstr "Typ tunera %s"
-
-msgid "Tuners & scanning"
-msgstr "Tunery & Skanowanie"
 
 msgid "Tuning algorithm"
 msgstr ""
@@ -16782,6 +16784,9 @@ msgstr "nieznany błąd"
 msgid "Unknown user: %d"
 msgstr "nieznany serwis"
 
+msgid "Unless set to 'disabled' you get a preview of channels inside the EPG list."
+msgstr "Jeśli nie ustawiono opcji „wyłączona”, otrzymasz podgląd kanałów znajdujących się na liście EPG."
+
 msgid "Unmark service as dedicated 3D service"
 msgstr "Odznacz usługę oznaczoną jako dedykowaną usługę 3D"
 
@@ -16790,7 +16795,7 @@ msgstr "Odmontowanie"
 
 #, python-format
 msgid "Unpack to %s"
-msgstr ""
+msgstr "Rozpakuj do %s"
 
 #, fuzzy
 msgid "Unpack to current folder"
@@ -16800,7 +16805,7 @@ msgid "Unsupported"
 msgstr "Nieobsługiwany"
 
 msgid "Unzipping Image"
-msgstr ""
+msgstr "Rozpakowanie Image"
 
 msgid "Up"
 msgstr "w górę"
@@ -16809,13 +16814,13 @@ msgid "Up/Down button mode"
 msgstr "Akcja dla przycisku 'w Górę/w Dół'"
 
 msgid "Up/Down buttons also for 'all up/down'?"
-msgstr ""
+msgstr "Przyciski góra/dół również dla 'wszystko w górę/w dół'?"
 
 msgid "Update"
 msgstr "Aktualizacja"
 
 msgid "Update Cache"
-msgstr ""
+msgstr "Aktualizuj pamięć podręczną"
 
 msgid "Update at your own risk"
 msgstr "Aktualizujesz na własne ryzyko"
@@ -18010,12 +18015,11 @@ msgstr "Tak, zrób kopię moich ustawień!"
 msgid "Yes, but don't save timeshift as movie"
 msgstr "Tak,ale nie zapisywać TimeShift jako filmu"
 
-#, fuzzy
 msgid "Yes, but if not available show the plugin browser"
-msgstr "Ta opcja pozwala na wyłączenie sortowania w przeglądarce wtyczek."
+msgstr "Tak, ale jeśli nie jest dostępny, pokaż przeglądanie wtyczek"
 
 msgid "Yes, but if not available show the timer list"
-msgstr ""
+msgstr "Tak, ale jeśli nie jest dostępny, wyświetl listę timerów"
 
 msgid "Yes, but save timeshift as movie and continue recording"
 msgstr "Tak,zapisać TimeShift i kontynuować nagrywanie"
@@ -21793,6 +21797,9 @@ msgstr "przełączanie"
 #~ msgid "FrontpanelDisplay"
 #~ msgstr "Panel przedni wyświetlacza"
 
+#~ msgid "Frontprocessor version: %d"
+#~ msgstr "Wersja frontprocesora: %d"
+
 #~ msgid "Frozen Cam Check"
 #~ msgstr "Sprawdź Cam"
 
@@ -22932,6 +22939,9 @@ msgstr "przełączanie"
 
 #~ msgid "Plugin"
 #~ msgstr "Wtyczka"
+
+#~ msgid "Plugin Filter..."
+#~ msgstr "Filtr Wtyczek..."
 
 #~ msgid "PluginDetails"
 #~ msgstr "Szczegóły wtyczki"
@@ -24299,6 +24309,9 @@ msgstr "przełączanie"
 
 #~ msgid "Tuner type"
 #~ msgstr "Typ tunera"
+
+#~ msgid "Tuners & scanning"
+#~ msgstr "Tunery & Skanowanie"
 
 #~ msgid "Turning step size[0]"
 #~ msgstr "Włączanie wielkość kroku[0]"
