@@ -426,9 +426,9 @@ class EPGFetcher(object):
                 start = int(timegm(strptime(show["start"].split("+")[0], "%Y-%m-%dT%H:%M:%S")))
                 stop = int(timegm(strptime(show["stop"].split("+")[0], "%Y-%m-%dT%H:%M:%S")))
                 duration = stop - start
-            title = show.get("title", "").encode('latin-1').encode('utf-8')
-            short = show.get("subtitle", "").encode('latin-1').encode('utf-8')
-            extended = show.get("desc", "").encode('latin-1').encode('utf-8')
+            title = show.get("title", "").encode('utf-8')
+            short = show.get("subtitle", "").encode('utf-8')
+            extended = show.get("desc", "").encode('utf-8')
             genres = []
             for g in show.get("category", []):
                 name = g['name']
@@ -439,7 +439,7 @@ class EPGFetcher(object):
                         genres.append(eit_remap)
                 else:
                     print '[EPGFetcher] ERROR: lookup of 0x%02x%s "%s" returned \"%s"' % (eit, (" (remapped to 0x%02x)" % eit_remap) if eit != eit_remap else "", name, mapped_name)
-            p_rating = ((config.plugins.icetv.member.country.value, parental_ratings.get(show.get("rating", "").encode('latin-1').encode('utf-8'), 0x00)),)
+            p_rating = ((config.plugins.icetv.member.country.value, parental_ratings.get(show.get("rating", "").encode('utf-8'), 0x00)),)
             res[channel_id].append((start, duration, title, short, extended, genres, event_id, p_rating))
         return res
 
