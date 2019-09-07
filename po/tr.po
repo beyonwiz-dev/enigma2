@@ -256,7 +256,7 @@ msgid "  Red key : Show/Hide channel name"
 msgstr "  Kırmızı tuş: Kanal adını göster / gizle"
 
 #, python-format
-msgid " ('%s') ends successefully."
+msgid " ('%s') ends successfully."
 msgstr " ('%s') başarıyla biter."
 
 #, python-format
@@ -3704,7 +3704,7 @@ msgstr ""
 "%s çalıştırılamıyor:%s.\n"
 "%s yüklü olmayan bir eklentide olabilir."
 
-msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
+msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternatively you can mount the network drive after the flash and perform a manufacturer reset to autorestore"
 msgstr "Yedeklemeyi depolamak için yalnızca bir ağ sürücüsü bulabilir, bu flaştan sonra otomatik mağazanın çalışmadığı anlamına gelir. Alternatif olarak, ağ sürücüsünü flaştan sonra monte edebilir ve otomatik depoya bir üretici sıfırlama işlemi gerçekleştirebilirsiniz"
 
 msgid ""
@@ -4571,9 +4571,6 @@ msgstr "Ağ maskesini düzenleyin."
 msgid "Configure the number of days after which items are automatically removed from the trash can."
 msgstr "Öğelerin çöp kutusundan otomatik olarak kaldırıldığı günlerin sayısını yapılandırın."
 
-msgid "Configure the number of days after which items are automaticaly removed from the trash can."
-msgstr "Öğelerin çöp kutusundan otomatik olarak kaldırılmasından sonraki gün sayısını yapılandırın."
-
 msgid "Configure the number of days old timers are kept before they are automatically removed from the timer list."
 msgstr "Eski zamanlayıcıların, zamanlayıcı listesinden atılmadan önce tutulacakları gün sayısını belirleyin."
 
@@ -4906,7 +4903,7 @@ msgstr "Sunucuya bağlanılamadı"
 msgid "Could not find installed channel list."
 msgstr "Kurulmuş kanal listesi bulunamadı."
 
-msgid "Could not find suitable media - Please remove some downloaded images or insert a media (e.g. USB stick) with sufficiant free space and try again!"
+msgid "Could not find suitable media - Please remove some downloaded images or insert a media (e.g. USB stick) with sufficient free space and try again!"
 msgstr "Uygun medya bulunamadı - Lütfen indirilen bazı resimleri silin veya yeteri kadar boş alana sahip bir medya yerleştirin (örn. USB bellek) ve tekrar deneyin!"
 
 msgid "Could not load Medium! No disc inserted?"
@@ -4965,7 +4962,7 @@ msgstr "Dizin oluştur"
 msgid "Create directory/folder"
 msgstr "Dizin / klasör oluştur"
 
-msgid "Create seperate radio userbouquet"
+msgid "Create separate radio userbouquet"
 msgstr "Ayrı bir radyo kullanıcısı"
 
 msgid "Create symlink to file"
@@ -5514,10 +5511,10 @@ msgstr "Anahtar ve motor komutu arasındaki gecikme"
 msgid "Delay for external subtitles"
 msgstr "Altyazı gecikme süresi"
 
-msgid "Delay in miliseconds after finish scrolling text on display."
+msgid "Delay in milliseconds after finish scrolling text on display."
 msgstr "Ekranda kayan metni kaydırdıktan sonra milisaniye cinsinden gecikme."
 
-msgid "Delay in miliseconds before start of scrolling text on display."
+msgid "Delay in milliseconds before start of scrolling text on display."
 msgstr "Ekranda metin kaydırmaya başlamadan önce milisaniye cinsinden gecikme."
 
 msgid "Delay time"
@@ -5555,7 +5552,7 @@ msgstr "Dilleri Sil"
 msgid "Delete Plugins"
 msgstr "Eklentileri Sil"
 
-msgid "Delete and unstall Plugins. This will remove the Plugin from your box"
+msgid "Delete and uninstall Plugins. This will remove the Plugin from your box"
 msgstr "Eklentileri sil ve kaldır. Bu eklentiyi kutunuzdan kaldıracak"
 
 #
@@ -8242,7 +8239,7 @@ msgstr "'Yes olarak ayarlanırsa; Medya oynatma sırasında Hızlı Yönlendirme
 msgid "If set to 'yes; the infobar will remain shown permanently in 'paused' state (no timeout)."
 msgstr "Eğer 'evet' olarak ayarlandıysa; bilgi çubuğu 'duraklatıldı' durumunda kalıcı olarak gösterilmeye devam edecek (zaman aşımı yok)."
 
-msgid "If the 'deep standby workaround' is enabled, it waits until the system time is syncronised. Depending on the requirement, the devices wake up will continuing after a maximum of 2 minutes."
+msgid "If the 'deep standby workaround' is enabled, it waits until the system time is synchronized. Depending on the requirement, the devices wake up will continuing after a maximum of 2 minutes."
 msgstr "'Derin bekleme geçici çözümü' etkinse, sistem saati eşitlenene kadar bekler. Gereksinime bağlı olarak, uyandırma aygıtları en fazla 2 dakika sonra devam eder."
 
 msgid "If the free space is less than setting value, then an attempt is made to delete the old timeshift files."
@@ -14605,7 +14602,7 @@ msgstr "Grafiksel EPG'yi Göster"
 msgid "Show HDD progress"
 msgstr "HDD ilerlemesini göster"
 
-msgid "Show HDMI Output Resulution"
+msgid "Show HDMI Output Resolution"
 msgstr "HDMI Çıkış Resulüsünü Göster"
 
 msgid "Show HDMI-Output Res"
@@ -14898,7 +14895,7 @@ msgstr "Menü numaralarını göster"
 msgid "Show message if File Commander is not running and all Task's are completed."
 msgstr "Dosya Komutanı çalışmıyorsa ve tüm Görevler tamamlandıysa mesajı göster."
 
-msgid "Show message if a background script ends successefully. Has 'stout', then this is displayed as additional info."
+msgid "Show message if a background script ends successfully. Has 'stout', then this is displayed as additional info."
 msgstr "Bir arka plan komut dosyası başarılı bir şekilde sona ererse mesajı göster. 'Stout' var, bu ek bilgi olarak gösterilir."
 
 msgid "Show message when recording starts"
@@ -15789,7 +15786,7 @@ msgstr "Zaman kaymasını durdurun ve timeshift arabelleğini film olarak kayded
 msgid "Stop timeshift while recording?"
 msgstr "Kayıt yapılırken zaman-kaydırma durdurulsun mu?"
 
-msgid "Stop's timeshift being used if a recording is in progress. (adviseable for usb sticks)"
+msgid "Stop's timeshift being used if a recording is in progress. (advisable for usb sticks)"
 msgstr "Bir kaydın devam etmesi durumunda durdurmanın zaman kayması kullanılır. (USB çubukları için tavsiye edilir)"
 
 msgid "Stopped"
@@ -16946,10 +16943,10 @@ msgstr "3D kipinin seçilmesini sağlar"
 msgid "This option lets you show the option in the extension screen"
 msgstr "Eklentiler ekranında seçeneğin görüntülenmesini sağlar"
 
-msgid "This option moves the PVR status from the seprate window into the MoviePlayer infobar."
+msgid "This option moves the PVR status from the separate window into the MoviePlayer infobar."
 msgstr "Bu seçenek, PVR durumunu septat penceresinden MoviePlayer bilgi çubuğuna taşır."
 
-msgid "This option set the level of surpression of musquito noise (Musquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
+msgid "This option set the level of suppression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Bu seçenek, musquito noise gürültü bastırma düzeyini ayarlamak (musquito noise Gürültü güçlü sıkıştırma sonucu rastgele aliasing). Açıkçası bu resim ayrıntıları pahasına gider."
 
 msgid "This option sets  the picture contrast."
@@ -17871,7 +17868,7 @@ msgstr[0] "Güncelleme bitti, %d paket yüklendi."
 msgid "Update delay for Events in List"
 msgstr "Listedeki Etkinlikler için gecikmeyi güncelle"
 
-msgid "Update delay for Events in List. Scrolling in List is faster with higher delay, specialy on big Lists !"
+msgid "Update delay for Events in List. Scrolling in List is faster with higher delay, especially on big Lists !"
 msgstr "Listedeki Etkinlikler için gecikmeyi güncelle. Listede ilerlemek, büyük listelerde özel olarak daha yüksek gecikme ile daha hızlı!"
 
 #
@@ -18780,7 +18777,7 @@ msgstr "Ayın hangi günü?"
 msgid "What Day of week ?"
 msgstr "Haftanın hangi günü ?"
 
-msgid "What action is required on complettion of the timer? 'Auto' lets the box return to the state it had when the timer started. 'Do nothing', 'Go to standby' and 'Go to deep standby' do ecaxtly that."
+msgid "What action is required on completion of the timer? 'Auto' lets the box return to the state it had when the timer started. 'Do nothing', 'Go to standby' and 'Go to deep standby' do exactly that."
 msgstr "Zamanlama bitiminde hangi eylem gerekiyor? 'Auto': alıcı kayıt başladığındaki durumuna döner. 'Hiçbirşey yapma', 'Beklemeye geç' ve 'Derin uykuya geç' aynen uygulanır."
 
 #
@@ -18899,7 +18896,7 @@ msgstr "Etkinleştirilince, teletekst altyazıları özgün konumlarında göste
 msgid "When enabled, the VCR scart option will be shown on the main menu"
 msgstr "Etkinleştirildiğinde, VCR scart seçeneği ana menüde gösterilecektir"
 
-msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Etkinleştirildiğinde, her bir kaydın uzunluğu movieliste gösterilecektir (bu, bazı ek yükleme sürelerine neden olabilir)."
 
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
@@ -19314,7 +19311,7 @@ msgstr ""
 "Öğesine bağlı bir PC'ye ihtiyacınız var %s% s. Daha fazla bilgiye ihtiyacınız varsa, lütfen http://www.opena.tv adresini ziyaret edin.\n"
 "%s% s artık durdurulacak. Güncelleme talimatlarını web sitesinden gerçekleştirdikten sonra, yeni ürün yazılımınız ayarlarınızı geri yüklemenizi isteyecektir."
 
-msgid "You seem to be in timeshft, the service wil breifly stop as timeshfit stops."
+msgid "You seem to be in timeshft, the service will briefly stop as timeshfit stops."
 msgstr "Timeshfitte gözüküyorsun, hizmet timeshfit durur gibi durur."
 
 msgid "You seem to be in timeshift!"
@@ -19443,7 +19440,7 @@ msgid "Your Hardware can detect ci mode self or work only in legacy mode."
 msgstr "Donanımınız ci modunu algılayabilir veya yalnızca eski modda çalışabilir."
 
 #, python-format
-msgid "Your Receiver has a Software problem detected. Since the last reboot it has occured %d times.\n"
+msgid "Your Receiver has a Software problem detected. Since the last reboot it has occurred %d times.\n"
 msgstr "Alıcınızda Yazılım sorunu tespit edildi. Son yeniden başlatmadan bu yana %d kez gerçekleşti.\n"
 
 msgid "Your STB will restart after pressing OK on your remote control."
@@ -21017,7 +21014,7 @@ msgstr "oynatma listesini tekrarla"
 msgid "repeated"
 msgstr "tekrarlandı"
 
-msgid "resoring satellites.xml not posibel!"
+msgid "restoring satellites.xml not possible!"
 msgstr "satellites.xml emici değil posibel!"
 
 #

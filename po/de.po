@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: tuxbox-enigma 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-07 10:53+0000\n"
+"POT-Creation-Date: 2019-09-04 16:50+0000\n"
 "PO-Revision-Date: 2019-05-04 10:31+0200\n"
 "Last-Translator: Schimmelreiter\n"
 "Language-Team: openATV\n"
@@ -245,7 +245,25 @@ msgstr "     falsches Backup-Ziel "
 msgid "   (%s MHz)"
 msgstr ""
 
-msgid "   (1,7 GHz)"
+msgid "   (1.0 GHz)"
+msgstr ""
+
+msgid "   (1.3 GHz)"
+msgstr ""
+
+msgid "   (1.5 GHz)"
+msgstr ""
+
+msgid "   (1.6 GHz)"
+msgstr ""
+
+msgid "   (1.7 GHz)"
+msgstr ""
+
+msgid "   (2.0 GHz)"
+msgstr ""
+
+msgid "   (2.1 GHz)"
 msgstr ""
 
 msgid "  Menu key : Select quad channel"
@@ -255,7 +273,7 @@ msgid "  Red key : Show/Hide channel name"
 msgstr "  Rot: Zeige/verstecke Sendernamen"
 
 #, python-format
-msgid " ('%s') ends successefully."
+msgid " ('%s') ends successfully."
 msgstr " ('%s') endet erfolgreich."
 
 #, python-format
@@ -1146,6 +1164,10 @@ msgstr "%s ( %s Karten)"
 msgid "%s (%04o)"
 msgstr ""
 
+#, fuzzy, python-format
+msgid "%s (%s"
+msgstr "%s (%s)\n"
+
 #, python-format
 msgid "%s (%s)"
 msgstr ""
@@ -1153,10 +1175,6 @@ msgstr ""
 #, python-format
 msgid "%s (%s)\n"
 msgstr "%s (%s)\n"
-
-#, python-format
-msgid "%s (%sB"
-msgstr ""
 
 #, python-format
 msgid "%s - Setup"
@@ -1212,10 +1230,6 @@ msgstr "%s/%s: %s"
 #, python-format
 msgid "%s: %s"
 msgstr ""
-
-#, python-format
-msgid "%sB"
-msgstr "%s B"
 
 #, python-format
 msgid "%sMode for FHD (up to 1080p)"
@@ -1530,9 +1544,6 @@ msgstr "16:9 Letterbox"
 msgid "18 V"
 msgstr "18V"
 
-msgid "1:1"
-msgstr "1:1"
-
 msgid "1X"
 msgstr "1x"
 
@@ -1697,9 +1708,6 @@ msgstr "32"
 msgid "32 Mb"
 msgstr "32 MB"
 
-msgid "3:2"
-msgstr "3:2"
-
 msgid "3D Mode"
 msgstr "3D-Modus"
 
@@ -1793,12 +1801,6 @@ msgstr "50p/60p"
 msgid "512 Mb"
 msgstr "512 MB"
 
-msgid "5:2"
-msgstr "5:2"
-
-msgid "5:3"
-msgstr "5:3"
-
 msgid "5s"
 msgstr "5 s"
 
@@ -1845,9 +1847,6 @@ msgstr "720p50"
 
 msgid "720p50: 24p/50p/60p"
 msgstr "720p50: 24p/50p/60p"
-
-msgid "7:3"
-msgstr "7:3"
 
 #
 msgid "8"
@@ -2471,6 +2470,12 @@ msgstr "Algerien"
 msgid "Alias"
 msgstr "Alias"
 
+msgid "Alignment channel number"
+msgstr "Ausrichtung Kanalnummer"
+
+msgid "Alignment event-progress"
+msgstr "Ausrichtung Sendungsfortschritt"
+
 msgid "Alignment of events"
 msgstr "Ausrichtung der Sendungsnamen"
 
@@ -2640,9 +2645,6 @@ msgstr "Leere Dateinamen sind unzulässig."
 
 msgid "An error occurred while downloading the packetlist. Please try again."
 msgstr "Beim Laden der Paketliste ist ein Fehler aufgetreten. Bitte erneut versuchen."
-
-msgid "An unknown error occured!"
-msgstr "Unbekannter Fehler aufgetreten!"
 
 msgid "An unknown error occurred!"
 msgstr "Ein unbekannter Fehler ist aufgetreten!"
@@ -3705,7 +3707,7 @@ msgid ""
 "%s may be in a plugin that is not installed."
 msgstr ""
 
-msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternativaly you can mount the network drive after the flash and perform a manufacurer reset to autorestore"
+msgid "Can only find a network drive to store the backup this means after the flash the autorestore will not work. Alternatively you can mount the network drive after the flash and perform a manufacturer reset to autorestore"
 msgstr ""
 
 msgid ""
@@ -4580,9 +4582,6 @@ msgstr "Netzwerkmaske einstellen."
 msgid "Configure the number of days after which items are automatically removed from the trash can."
 msgstr "Hier können Sie festlegen, wie viele Tage der Inhalt vom Papierkorb erhalten bleibt, bis automatisch gelöscht wird."
 
-msgid "Configure the number of days after which items are automaticaly removed from the trash can."
-msgstr "Hier können Sie festlegen, wie viele Tage der Inhalt vom Papierkorb erhalten bleiben soll."
-
 msgid "Configure the number of days old timers are kept before they are automatically removed from the timer list."
 msgstr "Legen Sie die Vorhaltezeit (in Tagen) für abgelaufene Timer fest, nach der diese automatisch aus der Timer-Liste gelöscht werden."
 
@@ -4915,7 +4914,7 @@ msgstr "Konnte nicht mit dem Server verbinden"
 msgid "Could not find installed channel list."
 msgstr "Kann keine installierte Kanalliste finden."
 
-msgid "Could not find suitable media - Please remove some downloaded images or insert a media (e.g. USB stick) with sufficiant free space and try again!"
+msgid "Could not find suitable media - Please remove some downloaded images or insert a media (e.g. USB stick) with sufficient free space and try again!"
 msgstr "Es konnte kein geeignetes Medium gefunden werden. Bitte entfernen Sie einige heruntergeladene Images oder legen Sie ein Medium (z. B. USB-Stick) mit ausreichend freiem Speicherplatz ein und versuchen Sie es erneut."
 
 msgid "Could not load Medium! No disc inserted?"
@@ -4976,7 +4975,7 @@ msgstr "Verzeichnis anlegen"
 msgid "Create directory/folder"
 msgstr "Verzeichnis erstellen"
 
-msgid "Create seperate radio userbouquet"
+msgid "Create separate radio userbouquet"
 msgstr "Erzeuge separates Radiobouquet"
 
 msgid "Create symlink to file"
@@ -5517,11 +5516,11 @@ msgid "Delay for external subtitles"
 msgstr "Verzögerung für externe Untertitel"
 
 # Display neu 5.1
-msgid "Delay in miliseconds after finish scrolling text on display."
+msgid "Delay in milliseconds after finish scrolling text on display."
 msgstr "Hier können Sie die Verzögerung (in Millisekunden) nach einem Text-Durchlauf auf dem Display einstellen."
 
 # Display neu 5.1
-msgid "Delay in miliseconds before start of scrolling text on display."
+msgid "Delay in milliseconds before start of scrolling text on display."
 msgstr "Hier können Sie die Verzögerung (in Millisekunden) vor einem Text-Durchlauf auf dem Display einstellen."
 
 msgid "Delay time"
@@ -5557,7 +5556,7 @@ msgstr "Sprachen löschen"
 msgid "Delete Plugins"
 msgstr "Entfernen der Erweiterungen"
 
-msgid "Delete and unstall Plugins. This will remove the Plugin from your box"
+msgid "Delete and uninstall Plugins. This will remove the Plugin from your box"
 msgstr "Entfernen installierter Erweiterungen. Dadurch wird das Plugin von der Box entfernt"
 
 msgid "Delete current line"
@@ -5805,8 +5804,17 @@ msgstr "PiP wurde deaktiviert.\n"
 msgid "Dish"
 msgstr "Spiegel"
 
+msgid "Disk full?"
+msgstr "Festplatte voll?"
+
+msgid "Disk is not writable!"
+msgstr "Festplatte ist nicht beschreibbar!"
+
 msgid "Disk space to reserve for recordings (in GB)"
 msgstr "Für Aufnahmen reservierter Speicher (in GB)"
+
+msgid "Disk was not found!"
+msgstr "Festplatte wurde nicht gefunden!"
 
 #
 msgid "Display 16:9 content as"
@@ -6460,6 +6468,9 @@ msgstr "Überprüfung von IP-Adressen aktivieren"
 # PowerTimerEntry.py
 msgid "Enable Network Traffic check"
 msgstr "Überprüfung der Netzwerkdatenübertragung aktivieren"
+
+msgid "Enable OpenTV EPG"
+msgstr "OpenTV EPG aktivieren"
 
 msgid "Enable Quad PIP"
 msgstr "Aktiviere Quad-PiP"
@@ -7980,6 +7991,9 @@ msgstr "Bekannte Dateiendungen ausblenden"
 msgid "Hide mute notification"
 msgstr "Ausblenden der Stummschaltungsanzeige"
 
+msgid "Hide number markers"
+msgstr "Nummerierte Marker verstecken"
+
 msgid "Hide parental locked services"
 msgstr "Jugendschutz geschützte Kanäle verbergen"
 
@@ -8247,7 +8261,7 @@ msgstr "Wenn 'Ja' eingestellt ist, wird die Infobar bei schnellem Vor- und Rück
 msgid "If set to 'yes; the infobar will remain shown permanently in 'paused' state (no timeout)."
 msgstr "Wenn 'Ja' eingestellt ist, wird die Infobar im pausierten Zustand dauerhaft angezeigt und nicht ausgeblendet."
 
-msgid "If the 'deep standby workaround' is enabled, it waits until the system time is syncronised. Depending on the requirement, the devices wake up will continuing after a maximum of 2 minutes."
+msgid "If the 'deep standby workaround' is enabled, it waits until the system time is synchronized. Depending on the requirement, the devices wake up will continuing after a maximum of 2 minutes."
 msgstr "Wenn der 'Deep Standby Workaround' aktiviert ist wird gewartet bis die Systemzeit syncronisiert wurde. Je nach Erfordernis wird das aufwecken der Geräte in maximal 2 Minuten fortgesetzt."
 
 msgid "If the free space is less than setting value, then an attempt is made to delete the old timeshift files."
@@ -9737,10 +9751,6 @@ msgid "Mount"
 msgstr "Mount"
 
 #, python-format
-msgid "Mount '%s' has failed to write file."
-msgstr ""
-
-#, python-format
 msgid "Mount '%s' has not enough free space to record."
 msgstr "Zielort '%s' hat nicht genügend freien Speicher."
 
@@ -10627,7 +10637,7 @@ msgstr "Nichts tun, nur das Menü verlassen"
 
 msgctxt "now/next: 'now' event label"
 msgid "Now"
-msgstr ""
+msgstr "Jetzt"
 
 # ImageBackup.py
 msgid "Now building the Backup Image"
@@ -12212,6 +12222,9 @@ msgstr "Links"
 msgid "Progress bar right"
 msgstr "Rechts"
 
+msgid "Progress info font size"
+msgstr "Schriftgröße für Fortschrittsinformationen"
+
 msgid "Progress:"
 msgstr "Fortschritt:"
 
@@ -12672,6 +12685,36 @@ msgstr "Verbleibende"
 
 msgid "Remaining & Elapsed"
 msgstr "Verbleibende & Verstrichene"
+
+msgid "Remaining minutes left"
+msgstr "verbleibende Minuten Links"
+
+msgid "Remaining minutes right"
+msgstr "verbleibende Minuten Rechts"
+
+msgid "Progress bar/Remaining minutes left"
+msgstr "Fortschrittsanzeige/verbleibende Minuten Links"
+
+msgid "Progress bar/Remaining minutes right"
+msgstr "Fortschrittsanzeige/verbleibende Minuten Rechts"
+
+msgid "Remaining minutes/Progress bar left"
+msgstr "verbleibende Minuten/Fortschrittsanzeige Links"
+
+msgid "Remaining minutes/Progress bar right"
+msgstr "verbleibende Minuten/Fortschrittsanzeige Rechts"
+
+msgid "Progress bar/Percentage left"
+msgstr "Fortschrittsanzeige/Prozent Links"
+
+msgid "Progress bar/Percentage right"
+msgstr "Fortschrittsanzeige/Prozent Rechts"
+
+msgid "Percentage/Progress bar left"
+msgstr "Prozent/Fortschrittsanzeige Links"
+
+msgid "Percentage/Progress bar right"
+msgstr "Prozent/Fortschrittsanzeige Rechts"
 
 # /data/setup.xml
 msgid "Remember last service in PiP"
@@ -14282,6 +14325,9 @@ msgstr "Bestimmt die Anzeigedauer der Infoleiste."
 msgid "Set the time to hide the second infobar. The bar also disappears on pressing 'OK'."
 msgstr "Bestimmt die Anzeigedauer der 2. Infoleiste. Sie verschwindet auch bei Druck auf OK."
 
+msgid "Set the time to wait for execute the default action in shutdown, standby or restart messages. (e.g. used in Timer, PowerTimer, Sleeptimer, ...)"
+msgstr "Legen Sie die Wartezeit für die Ausführung der Standardaktion in den Meldungen Ausschalten, Standby oder Neustart fest. (z.B. verwendet in Timer, PowerTimer, Ausschalt-Timer, ...)"
+
 msgid "Set the type of the progress indication in the channel selection screen."
 msgstr "Wählen Sie die Art der Fortschrittsanzeige in der Kanalliste."
 
@@ -14690,7 +14736,7 @@ msgid "Show HDD progress"
 msgstr "Zeige HDD Fortschritt"
 
 # Box Display
-msgid "Show HDMI Output Resulution"
+msgid "Show HDMI Output Resolution"
 msgstr "Diese Option erlaubt es, die HDMI Auflösung auf dem Display anzuzeigen"
 
 msgid "Show HDMI-Output Res"
@@ -14985,7 +15031,7 @@ msgstr "Menüeinträge nummerieren"
 msgid "Show message if File Commander is not running and all Task's are completed."
 msgstr "Zeige eine Nachricht wenn der File Commander nicht läuft und alle Aufgaben beendet sind."
 
-msgid "Show message if a background script ends successefully. Has 'stout', then this is displayed as additional info."
+msgid "Show message if a background script ends successfully. Has 'stout', then this is displayed as additional info."
 msgstr "Zeige eine Nachricht wenn ein Hintergrundskript erfolgreich beendet wurde. Ist 'stout' vorhanden wird es als Zusatzinformation angezeigt."
 
 #
@@ -15052,6 +15098,9 @@ msgstr "Zeige Bildschirmschoner"
 
 msgid "Show service list"
 msgstr "Zeige Kanal-Liste"
+
+msgid "Show service name and event description among each other instead of side by side. After a change, an adjustment of the number of lines is required."
+msgstr "Zeigt den Namen des Senders und die Sendungsbeschreibung untereinander statt nebeneinander an. Nach einer Änderung ist die Anpassung der Zeilenanzahl erforderlich."
 
 msgid "Show service type icons"
 msgstr "Anzeige des Servicetyps"
@@ -15155,6 +15204,9 @@ msgstr "Zeige Sprachpakete"
 msgid "Show transponder remaining/elapsed as"
 msgstr "Zeige Transponder verbleibende/verstrichene Zeit in"
 
+msgid "Show two lines per entry"
+msgstr "Zeige zwei Zeilen pro Eintrag"
+
 msgid "Show unknown Videoresolution as next higher or as highest screen resolution."
 msgstr "Zeige unbekannte Videoauflösungen mit der nächsthöheren oder höchsten Auflösung."
 
@@ -15184,9 +15236,6 @@ msgid "Shows Plugins Browser. Here you can setup installed Plugin"
 msgstr "Zeige Erweiterungen, hier können die Erweiterungen konfiguriert werden."
 
 msgid "Shows available plugins. Here you can download and install them"
-msgstr "Zeigt die verfügbaren Erweiterungen die Sie downloaden und installieren können"
-
-msgid "Shows available pluigns. Here you can download and install them"
 msgstr "Zeige verfügbare Erweiterungen, zum Downloaden und Installieren."
 
 msgid "Shows available softcams. Here you can download and install them"
@@ -15866,7 +15915,7 @@ msgstr "Timeshift stoppen und den Timeshift-Puffer als Film speichern und die ak
 msgid "Stop timeshift while recording?"
 msgstr "Timeshift während Aufnahme beenden?"
 
-msgid "Stop's timeshift being used if a recording is in progress. (adviseable for usb sticks)"
+msgid "Stop's timeshift being used if a recording is in progress. (advisable for usb sticks)"
 msgstr "Beendet Timeshift, wenn eine Aufnahme läuft, ratsam bei der Verwendung eines USB-Sticks."
 
 msgid "Stopped"
@@ -17036,10 +17085,10 @@ msgstr "Diese Option erlaubt es, den 3D Modus zu aktivieren"
 msgid "This option lets you show the option in the extension screen"
 msgstr "Diese Option erlaubt es, die Option in Erweiterungen anzuzeigen"
 
-msgid "This option moves the PVR status from the seprate window into the MoviePlayer infobar."
+msgid "This option moves the PVR status from the separate window into the MoviePlayer infobar."
 msgstr "Diese Option verschiebt den PVR Status aus einem separaten Fenster in die Infobar des Medienplayers."
 
-msgid "This option set the level of surpression of musquito noise (Musquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
+msgid "This option set the level of suppression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
 msgstr "Diese Option bestimmt die Stufe der Unterdrückung von Mosquito Rauschen. Mosquito Rauschen ist eine zufällige Abtaststörung durch zu hohe Kompression. Es geht auf Kosten von Bildeinzelheiten."
 
 msgid "This option sets  the picture contrast."
@@ -17205,6 +17254,9 @@ msgstr "Zeit zwischen den Dias in der Bildbetrachter - Diashow."
 
 msgid "Time delay for the repeated transmission"
 msgstr "Zeitverzögerung für die wiederholte Übertragung"
+
+msgid "Time delay of the shutdown messages"
+msgstr "Zeitverzögerung der Abschaltmeldungen"
 
 msgid "Time delay until standby or deep standby"
 msgstr "Zeitverzögerung bis zum Standby oder Deep-Standby"
@@ -17970,7 +18022,7 @@ msgstr[1] ""
 msgid "Update delay for Events in List"
 msgstr "Aktualisierungs-Verzögerung für Events in der Liste"
 
-msgid "Update delay for Events in List. Scrolling in List is faster with higher delay, specialy on big Lists !"
+msgid "Update delay for Events in List. Scrolling in List is faster with higher delay, especially on big Lists !"
 msgstr "Aktualisierungs-Verzögerung für Events in der Liste. Das Scrollverhalten wird schneller mit einer höheren Verzögerung, speziell bei größeren Listen!"
 
 msgid "Update failed!"
@@ -18115,6 +18167,9 @@ msgstr "Verwende Netmed EPG Informationen, wenn sie verfügbar ist."
 # ImageBackup.py
 msgid "Use OnlineFlash in SoftwareManager"
 msgstr "verwenden Sie OnlineFlash im SoftwareManager"
+
+msgid "Use OpenTV EPG information when it is available."
+msgstr "Verwende OpenTV EPG Information, wenn sie verfügbar ist."
 
 msgid "Use TV remote control"
 msgstr "Nutze TV-Fernbedienung"
@@ -18393,6 +18448,12 @@ msgstr "Vertikal"
 msgid "Vertical EPG"
 msgstr "Vertikaler EPG"
 
+msgid "Vertical alignement for the event-progress."
+msgstr "Vertikale Ausrichtung des Sendungsfortschritt."
+
+msgid "Vertical alignement for the service number."
+msgstr "Vertikale Ausrichtung der Kanalnummer."
+
 # satconfig.py
 msgid "Vertical turning speed"
 msgstr "Vertikale Drehgeschwindigkeit"
@@ -18530,7 +18591,7 @@ msgid "Videoformat"
 msgstr "Videoformat"
 
 msgid "Videomode"
-msgstr "Videoodus"
+msgstr "Videomodus"
 
 msgid "Videosetup"
 msgstr "Video-Einstellungen"
@@ -18893,7 +18954,7 @@ msgstr "An welchem Tag des Monats?"
 msgid "What Day of week ?"
 msgstr "An welchem Wochentag?"
 
-msgid "What action is required on complettion of the timer? 'Auto' lets the box return to the state it had when the timer started. 'Do nothing', 'Go to standby' and 'Go to deep standby' do ecaxtly that."
+msgid "What action is required on completion of the timer? 'Auto' lets the box return to the state it had when the timer started. 'Do nothing', 'Go to standby' and 'Go to deep standby' do exactly that."
 msgstr "Was soll nach dem ausgeführten Timer gemacht werden? 'Automatisch' lässt die Box in den Zustand gehen, den sie vor dem Timerstart hatte. 'Keine Änderung', 'In Standby gehen' und 'In Deep-Standby herunterfahren'"
 
 msgid "What do you want to play?\n"
@@ -18993,6 +19054,9 @@ msgstr "Wenn aktiviert, werden die Netzwerk-Papierkörbe geleert."
 msgid "When enabled, network trash cans are probed for cleaning."
 msgstr "Hier können Sie festlegen, ob Netzwerk-Papierkörbe auch geleert werden."
 
+msgid "When enabled, number markers will be hidden."
+msgstr "Wenn diese Option aktiviert ist, werden die nummerierten Marker ausgeblendet."
+
 msgid "When enabled, pressing '0' will zap you to the first channel in your first bouquet and delete your zap-history."
 msgstr "Wenn aktiviert, wird mit '0' zum ersten Sender Ihrer ersten Favoritenliste umgeschaltet und die Umschalthistorie wird gelöscht."
 
@@ -19022,7 +19086,7 @@ msgid "When enabled, the VCR scart option will be shown on the main menu"
 msgstr "Bei Aktivierung wird die Option Scart-Videorekorder im Hauptmenü angezeigt."
 
 #
-msgid "When enabled, the lenght of each recording will be shown in the movielist (this might cause some additional loading time)."
+msgid "When enabled, the length of each recording will be shown in the movielist (this might cause some additional loading time)."
 msgstr "Wenn ausgewählt, wird die Länge einer Aufnahme in der Filmliste angezeigt (dies kann die Ladezeit der Fimliste beeinflussen)."
 
 msgid "When enabled, the receiver will automatically use the audio track which you selected before."
@@ -19172,15 +19236,15 @@ msgstr "Möchten Sie die PIN %s dauerhaft speichern?"
 
 #, python-format
 msgid ""
-"Write error at start of recording. Disk %s\n"
+"Write error at start of recording. %s\n"
 "%s"
 msgstr ""
-"Schreibfehler beim Start der Aufnahme. Festplatte %s\n"
+"Schreibfehler beim Start der Aufnahme. %s\n"
 "%s"
 
 #, python-format
-msgid "Write error while recording. Disk %s"
-msgstr "Schreibfehler bei der Aufnahme. Festplatte %s"
+msgid "Write error while recording. %s"
+msgstr "Schreibfehler bei der Aufnahme. %s"
 
 msgid "Write failed!"
 msgstr "Schreiben fehlgeschlagen!"
@@ -19198,6 +19262,9 @@ msgid "XP1000"
 msgstr ""
 
 msgid "XP3000"
+msgstr ""
+
+msgid "XPicon, ZZZPicon"
 msgstr ""
 
 msgid "YCbCr420"
@@ -19389,7 +19456,10 @@ msgstr "Sie möchten einen bootfähigen USB-Stick zum Flashen von NFI-Images ers
 
 #
 msgid "You have chosen to restore your settings. Enigma2 will restart after restore. Please press OK to start the restore now."
-msgstr "Sie haben sich entschlossen, Ihre Einstellungen wiederherzustellen.\nEnigma2 wird nach der Wiederherstellung neu starten.\nBitte drücken Sie OK um mit der Wiederherstellung zu beginnen."
+msgstr ""
+"Sie haben sich entschlossen, Ihre Einstellungen wiederherzustellen.\n"
+"Enigma2 wird nach der Wiederherstellung neu starten.\n"
+"Bitte drücken Sie OK um mit der Wiederherstellung zu beginnen."
 
 msgid "You have chosen to save the current timeshift"
 msgstr ""
@@ -19443,7 +19513,7 @@ msgstr ""
 "Sie müssen einen PC mit Ihrer %s %s verbunden haben. Wenn Sie weiterführende Informationen benötigen, besuchen Sie die Webseite http://www.opena.tv.\n"
 "Die %s %s wird nun ausgeschaltet. Nachdem Sie das Update wie auf der Webseite beschrieben durchgeführt haben, wird Sie die neue Firmware fragen, ob Sie die Einstellungen wiederherstellen wollen."
 
-msgid "You seem to be in timeshft, the service wil breifly stop as timeshfit stops."
+msgid "You seem to be in timeshft, the service will briefly stop as timeshfit stops."
 msgstr ""
 
 msgid "You seem to be in timeshift!"
@@ -19573,7 +19643,7 @@ msgid "Your Hardware can detect ci mode self or work only in legacy mode."
 msgstr "Hardware erkennt das CI Protokoll selber oder Hardware arbeitet nur im Legacy Mode."
 
 #, python-format
-msgid "Your Receiver has a Software problem detected. Since the last reboot it has occured %d times.\n"
+msgid "Your Receiver has a Software problem detected. Since the last reboot it has occurred %d times.\n"
 msgstr "Ihr Receiver hat ein Softwareproblem erkannt. Seit dem letzten Neustart ist es %d Mal aufgetreten.\n"
 
 msgid "Your STB will restart after pressing OK on your remote control."
@@ -19691,6 +19761,12 @@ msgstr "ZOOM"
 
 msgid "ZOOM long"
 msgstr "ZOOM lang"
+
+msgid "ZPicon"
+msgstr ""
+
+msgid "ZZPicon"
+msgstr ""
 
 msgid "Zambia"
 msgstr "Sambia"
@@ -20460,9 +20536,6 @@ msgstr "Quellordner"
 msgid "full"
 msgstr ""
 
-msgid "full?"
-msgstr "voll?"
-
 msgid "further education"
 msgstr ""
 
@@ -20738,6 +20811,11 @@ msgid "middle"
 msgstr "Mitte"
 
 #
+#, fuzzy
+msgid "min"
+msgstr "Minuten"
+
+#
 msgid "mins"
 msgstr "Minuten"
 
@@ -20884,9 +20962,6 @@ msgstr "nicht aktiviert"
 msgid "not configured"
 msgstr "Nicht konfiguriert"
 
-msgid "not found!"
-msgstr "nicht gefunden!"
-
 #
 msgid "not locked"
 msgstr "Kein Signal"
@@ -20900,9 +20975,6 @@ msgstr "Nicht getestet"
 #
 msgid "not used"
 msgstr "Nicht verwendet"
-
-msgid "not writable!"
-msgstr "nicht beschreibbar!"
 
 msgid "not_tested"
 msgstr "Nicht_getestet"
@@ -21150,15 +21222,15 @@ msgstr "Wiederholung der Wiedergabeliste"
 msgid "repeated"
 msgstr "Wiederholend"
 
-msgid "resoring satellites.xml not posibel!"
-msgstr ""
-
 msgid "restart GUI"
 msgstr "GUI neustarten"
 
 # ChannelSelection.py
 msgid "restore deleted userbouquets"
 msgstr "Gelöschte Userbouquets wiederherstellen"
+
+msgid "restoring satellites.xml not possible!"
+msgstr ""
 
 msgid "reverse by date"
 msgstr "Umgekehrt nach Datum"
@@ -21600,9 +21672,6 @@ msgstr "Unbekannt"
 msgid "unknown error"
 msgstr "unbekannter Fehler"
 
-msgid "unknown error!"
-msgstr "unbekannter Fehler!"
-
 #
 msgid "unknown service"
 msgstr "Unbekannter Kanal"
@@ -21638,6 +21707,9 @@ msgstr ""
 #
 msgid "updates available."
 msgstr "Updates verfügbar."
+
+msgid "upper line"
+msgstr "obere Zeile"
 
 msgid "use best / controlled by HDMI"
 msgstr "Best Mögliches / Steuerung über HDMI"
@@ -21917,6 +21989,9 @@ msgstr "Umschalten"
 #~ msgid "%s not found !!"
 #~ msgstr "%s nicht gefunden!!"
 
+#~ msgid "%sB"
+#~ msgstr "%s B"
+
 #~ msgid ""
 #~ "(It is set that '%s' crash logs are displayed and written.\n"
 #~ "Info: It will always write the first, last but one and lastest crash log.)"
@@ -21973,6 +22048,9 @@ msgstr "Umschalten"
 #~ msgid "15 seconds"
 #~ msgstr "15 Sekunden"
 
+#~ msgid "1:1"
+#~ msgstr "1:1"
+
 #~ msgid "2 hours"
 #~ msgstr "2 Stunden"
 
@@ -22015,6 +22093,9 @@ msgstr "Umschalten"
 #~ msgid "30 seconds"
 #~ msgstr "30 Sekunden"
 
+#~ msgid "3:2"
+#~ msgstr "3:2"
+
 #~ msgid "4 hours"
 #~ msgstr "4 Stunden"
 
@@ -22027,6 +22108,12 @@ msgstr "Umschalten"
 #~ msgid "5 seconds"
 #~ msgstr "5 Sekunden"
 
+#~ msgid "5:2"
+#~ msgstr "5:2"
+
+#~ msgid "5:3"
+#~ msgstr "5:3"
+
 #~ msgid "6 seconds"
 #~ msgstr "6 Sekunden"
 
@@ -22038,6 +22125,9 @@ msgstr "Umschalten"
 
 #~ msgid "7-8"
 #~ msgstr "7-8"
+
+#~ msgid "7:3"
+#~ msgstr "7:3"
 
 #~ msgid "8 seconds"
 #~ msgstr "8 Sekunden"
@@ -25774,6 +25864,9 @@ msgstr "Umschalten"
 
 #~ msgid "tuner is not supported"
 #~ msgstr "Nicht unterstützter Tuner"
+
+#~ msgid "unknown error!"
+#~ msgstr "unbekannter Fehler!"
 
 #
 #~ msgid "use as HDD replacement"
