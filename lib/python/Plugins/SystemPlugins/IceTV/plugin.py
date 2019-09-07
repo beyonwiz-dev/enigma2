@@ -438,7 +438,8 @@ class EPGFetcher(object):
                 if mapped_name == name:
                         genres.append(eit_remap)
                 else:
-                    print '[EPGFetcher] ERROR: lookup of 0x%02x%s "%s" returned \"%s"' % (eit, (" (remapped to 0x%02x)" % eit_remap) if eit != eit_remap else "", name, mapped_name)
+                    pass
+                    #print '[EPGFetcher] ERROR: lookup of 0x%02x%s "%s" returned \"%s"' % (eit, (" (remapped to 0x%02x)" % eit_remap) if eit != eit_remap else "", name, mapped_name)
             p_rating = ((config.plugins.icetv.member.country.value, parental_ratings.get(show.get("rating", "").encode('utf-8'), 0x00)),)
             res[channel_id].append((start, duration, title, short, extended, genres, event_id, p_rating))
         return res
@@ -1061,7 +1062,7 @@ class IceTVRegionSetup(Screen):
         try:
             res = ice.Regions().get().json()
             regions = res["regions"]
-            print "[icetv] regions:",regions
+            #print "[icetv] regions:",regions
             rl = []
             for region in regions:
                 rl.append((str(region["name"]), int(region["id"]), str(region["country"])))
