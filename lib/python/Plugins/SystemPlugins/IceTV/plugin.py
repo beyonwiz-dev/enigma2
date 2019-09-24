@@ -329,13 +329,13 @@ class EPGFetcher(object):
 
     def doWork(self):
         global password_requested
-        self.addLog("Start update")
+        self.addLog(_("Start update"))
         if password_requested:
             self.addLog(_("Can not proceed - you need to login first"))
             return False
         if not ice.haveCredentials():
             password_requested = True
-            self.addLog("No token, requesting password...")
+            self.addLog(_("No token, requesting password..."))
             _session.open(IceTVNeedPassword)
             if not ice.haveCredentials():
                 return False
@@ -383,7 +383,7 @@ class EPGFetcher(object):
             password_requested = True
             self.addLog(_("No token, requesting password..."))
             _session.open(IceTVNeedPassword)
-        self.addLog("End update")
+        self.addLog(_("End update"))
         self.deferredPostStatus(None)
         self.statusCleanup()
         return res
@@ -555,7 +555,7 @@ class EPGFetcher(object):
                                     iceTimer["state"] = "failed"
                                     iceTimer["message"] = "Timer conflict: '%s'" % "', '".join(names)
                                     # print "[IceTV] Timer conflict:", conflicts
-                                    self.addLog("Timer '%s' conflicts with %s" % (name, "', '".join([n for n in names if n != name])))
+                                    self.addLog(_("Timer '%s' conflicts with %s") % (name, "', '".join([n for n in names if n != name])))
                     if not completed and not updated and not created:
                         iceTimer["state"] = "failed"
                         update_queue.append(iceTimer)
@@ -569,7 +569,7 @@ class EPGFetcher(object):
         res = True
         try:
             self.putTimers(update_queue)
-            self.addLog("Timers updated OK")
+            self.addLog(_("Timers updated OK"))
         except KeyError as ex:
             print "[IceTV] ", str(ex)
             res = False
@@ -689,7 +689,7 @@ class EPGFetcher(object):
                 timer["message"] = "Will record on %s" % config.plugins.icetv.device.label.value
             req.data["timers"] = [timer]
             res = req.put().json()
-            self.addLog("Timer '%s' updated OK" % local_timer.name)
+            self.addLog(_("Timer '%s' updated OK") % local_timer.name)
         except (IOError, RuntimeError, KeyError) as ex:
             _logResponseException(self, _("Can not update timer"), ex)
 
@@ -723,7 +723,7 @@ class EPGFetcher(object):
                 res = req.post()
                 try:
                     local_timer.ice_timer_id = res.json()["timers"][0]["id"].encode("utf-8")
-                    self.addLog("Timer '%s' created OK" % local_timer.name)
+                    self.addLog(_("Timer '%s' created OK") % local_timer.name)
                     if local_timer.ice_timer_id is not None:
                         NavigationInstance.instance.RecordTimer.saveTimer()
                         self.deferredPostStatus(local_timer)
@@ -1233,7 +1233,7 @@ class IceTVNeedPassword(ConfigListScreen, Screen):
             self.close()
             global password_requested
             password_requested = False
-            fetcher.addLog("Login OK")
+            fetcher.addLog(_("Login OK"))
             fetcher.createFetchJob()
         except (IOError, RuntimeError) as ex:
             msg = _logResponseException(fetcher, _("Login failure"), ex)
