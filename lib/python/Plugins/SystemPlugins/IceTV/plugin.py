@@ -22,10 +22,12 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from RecordTimer import RecordTimerEntry
 from ServiceReference import ServiceReference
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+from Tools.LoadPixmap import LoadPixmap
 from calendar import timegm
 from time import strptime, gmtime, strftime, time
 from datetime import datetime
-from . import config, enableIceTV, disableIceTV, getCountryCode
+from . import config, enableIceTV, disableIceTV
 import API as ice
 import requests
 from collections import deque, defaultdict
@@ -34,59 +36,156 @@ from Screens.TextBox import TextBox
 from Components.TimerSanityCheck import TimerSanityCheck
 import NavigationInstance
 from twisted.internet import reactor, threads
+from os import path
 
 _session = None
 password_requested = False
 
 genre_remaps = {
-    "AFL": 0xf7,
-    "Action": 0x1f,
-    "American Football": 0xf6,
-    "Baseball": 0xf5,
-    "Basketball": 0xf4,
-    "Boxing": 0x4a,
-    "Business & Finance": 0x84,
-    "Cartoon": 0x51,
-    "Comedy": 0xc0,
-    "Cricket": 0x4f,
-    "Current Affairs": 0x81,
-    "Cycling": 0x0e,
-    "Dance": 0x62,
-    "Documentary": 0xe0,
-    "Drama": 0xd0,
-    "Family": 0x0d,
-    "Fantasy": 0xf2,
-    "Film-Noir": 0x0c,
-    "Finance": 0x0b,
-    "Fishing": 0xa3,
-    "Food/Wine": 0xa4,
-    "Golf": 0x42,
-    "Hockey": 0x4e,
-    "Horror": 0xf1,
-    "Horse Racing": 0x0a,
-    "Lifestyle": 0xa2,
-    "MMA": 0x09,
-    "Mini Series": 0x08,
-    "Murder": 0x1c,
-    "Musical": 0x61,
-    "Mystery": 0x1b,
-    "Netball": 0x4d,
-    "Parliament": 0x82,
-    "Renovation": 0x07,
-    "Rowing": 0xf8,
-    "Rugby": 0x4c,
-    "Rugby League": 0x4b,
-    "Sailing": 0x06,
-    "Science": 0x94,
-    "Short Film": 0x05,
-    "Sitcom": 0xf3,
-    "Special": 0xb0,
-    "Thriller": 0x1a,
-    "Violence": 0x04,
-    "War": 0x1e,
-    "Western": 0x1d,
-    "Wrestling": 0x03,
-    "Youth": 0x02,
+    "AUS": {
+        "AFL": 0xf7,
+        "Action": 0x1f,
+        "American Football": 0xf6,
+        "Baseball": 0xf5,
+        "Basketball": 0xf4,
+        "Boxing": 0x4a,
+        "Business & Finance": 0x84,
+        "Cartoon": 0x51,
+        "Comedy": 0xc0,
+        "Cricket": 0x4f,
+        "Current Affairs": 0x81,
+        "Cycling": 0x0e,
+        "Dance": 0x62,
+        "Documentary": 0xe0,
+        "Drama": 0xd0,
+        "Family": 0x0d,
+        "Fantasy": 0xf2,
+        "Film-Noir": 0x0c,
+        "Finance": 0x0b,
+        "Fishing": 0xa3,
+        "Food/Wine": 0xa4,
+        "Golf": 0x42,
+        "Hockey": 0x4e,
+        "Horror": 0xf1,
+        "Horse Racing": 0x0a,
+        "Lifestyle": 0xa2,
+        "MMA": 0x09,
+        "Mini Series": 0x08,
+        "Murder": 0x1c,
+        "Musical": 0x61,
+        "Mystery": 0x1b,
+        "Netball": 0x4d,
+        "Parliament": 0x82,
+        "Renovation": 0x07,
+        "Rowing": 0xf8,
+        "Rugby": 0x4c,
+        "Rugby League": 0x4b,
+        "Sailing": 0x06,
+        "Science": 0x94,
+        "Short Film": 0x05,
+        "Sitcom": 0xf3,
+        "Special": 0xb0,
+        "Thriller": 0x1a,
+        "Violence": 0x04,
+        "War": 0x1e,
+        "Western": 0x1d,
+        "Wrestling": 0x03,
+        "Youth": 0x02,
+    },
+    "DEU": {
+        'Abenteuer': 0x01,
+        'Action': 0x1b,
+        'Alternative': 0x1a,
+        'Anime': 0x19,
+        'Bericht': 0x18,
+        'Boxen': 0x17,
+        'Clips': 0x16,
+        'Comedy': 0xc0,
+        'Current Affairs': 0x81,
+        'Documentary': 0xe0,
+        'Dokumentarfilm': 0x15,
+        'Dokumentation': 0x13,
+        'Drama': 0xd0,
+        'Eishockey': 0x11,
+        'Erotik': 0x10,
+        'Event': 0xef,
+        'Extremsport': 0xee,
+        'Familie': 0xed,
+        'Familien-Show': 0xec,
+        'Fantasy': 0xeb,
+        'Filme': 0xea,
+        'Fu\xc3\x9fball': 0xe9,
+        'Gerichtsshow': 0xe8,
+        'Geschichte': 0xe7,
+        'Gesundheit': 0xe6,
+        'Golf': 0xe5,
+        'Gymnastik': 0xe4,
+        'Handball': 0xe3,
+        'Heimat': 0xe2,
+        'Heimwerken': 0xe1,
+        'Homeshopping': 0xdf,
+        'Humor': 0xde,
+        'Information': 0xdd,
+        'Interview': 0xdc,
+        'Jazz': 0xdb,
+        'Jugend': 0xda,
+        'Kinder': 0xd9,
+        'Kino': 0xd8,
+        'Klassik': 0xd7,
+        'Kochshow': 0xd6,
+        'Krankenhaus': 0xd5,
+        'Krimi': 0xd4,
+        'Kultur': 0xd3,
+        'Kurzfilm': 0xd2,
+        'Leichtathletik': 0xd1,
+        'Magazin': 0xcf,
+        'Motor + Verkehr': 0xce,
+        'Motorsport': 0xcd,
+        'Musical': 0xcc,
+        'Musik': 0xcb,
+        'Mystery + Horror': 0xca,
+        'Nachrichten': 0xc9,
+        'Natur': 0xc8,
+        'Olympia': 0xc7,
+        'Politik': 0xc6,
+        'Pop': 0xc5,
+        'Radsport': 0xc4,
+        'Ratgeber': 0xc3,
+        'Reality': 0xc2,
+        'Reise': 0xc1,
+        'Reportage': 0xff,
+        'Reportagen': 0xfe,
+        'Rock': 0xfd,
+        'Romantik/Liebe': 0xfc,
+        'Science Fiction': 0xfb,
+        'Serie': 0xfa,
+        'Serien': 0xf9,
+        'Show': 0xf8,
+        'Shows': 0xf7,
+        'Soap': 0xf6,
+        'Special': 0xb0,
+        'Spielfilm': 0xf5,
+        'Spielshows': 0xf4,
+        'Sport': 0x40,
+        'Talkshows': 0xf3,
+        'Tennis': 0xf2,
+        'Theater': 0xf1,
+        'Thriller': 0xf0,
+        'US-Sport': 0x0f,
+        'Verschiedenes': 0x0e,
+        'Videoclip': 0x0d,
+        'Volksmusik': 0x0c,
+        'Volleyball': 0x0b,
+        'Vorschau': 0x0a,
+        'Wassersport': 0x09,
+        'Werbung': 0x08,
+        'Western': 0x07,
+        'Wetter': 0x06,
+        'Wintersport': 0x05,
+        'Wirtschat': 0x04,
+        'Wissen': 0x03,
+        'Zeichentrick': 0x02,
+    },
 }
 
 parental_ratings = {
@@ -413,6 +512,8 @@ class EPGFetcher(object):
 
     def makeChanShowMap(self, shows):
         res = defaultdict(list)
+        mapping_errors = set()
+        country_code = config.plugins.icetv.member.country.value
         for show in shows:
             channel_id = long(show["channel_id"])
             event_id = int(show.get("eit_id"))
@@ -432,16 +533,16 @@ class EPGFetcher(object):
             extended = show.get("desc", "").encode("utf-8")
             genres = []
             for g in show.get("category", []):
-                name = g['name']
-                eit = int(g["eit"], 0) or 0x01
-                eit_remap = genre_remaps.get(name, eit)
-                mapped_name = getGenreStringSub((eit_remap >> 4) & 0xf, eit_remap & 0xf, country=config.plugins.icetv.member.country.value)
+                name = g['name'].encode("utf-8")
+                eit = int(g.get("eit", "0"), 0) or 0x01
+                eit_remap = genre_remaps.get(country_code, {}).get(name, eit)
+                mapped_name = getGenreStringSub((eit_remap >> 4) & 0xf, eit_remap & 0xf, country=country_code)
                 if mapped_name == name:
                         genres.append(eit_remap)
-                else:
-                    pass
-                    # print '[EPGFetcher] ERROR: lookup of 0x%02x%s "%s" returned \"%s"' % (eit, (" (remapped to 0x%02x)" % eit_remap) if eit != eit_remap else "", name, mapped_name)
-            p_rating = ((config.plugins.icetv.member.country.value, parental_ratings.get(show.get("rating", "").encode("utf-8"), 0x00)),)
+                elif name not in mapping_errors:
+                    print '[EPGFetcher] ERROR: lookup of 0x%02x%s "%s" returned \"%s"' % (eit, (" (remapped to 0x%02x)" % eit_remap) if eit != eit_remap else "", name, mapped_name)
+                    mapping_errors.add(name)
+            p_rating = ((country_code, parental_ratings.get(show.get("rating", "").encode("utf-8"), 0x00)),)
             res[channel_id].append((start, duration, title, short, extended, genres, event_id, p_rating))
         return res
 
@@ -819,7 +920,13 @@ class IceTVMain(ChoiceBox):
                 (_("Enable IceTV"), "CALLFUNC", self.enable),
                 (_("Disable IceTV"), "CALLFUNC", self.disable),
                ]
-        super(IceTVMain, self).__init__(session, title=_("IceTV version %s") % ice._version_string, list=menu, skin_name=self.skinName, titlebartext=_("IceTV - Setup"))
+        try:
+            # Use windowTitle for compatibility betwwen OpenATV & OpenViX
+            super(IceTVMain, self).__init__(session, title=_("IceTV version %s") % ice._version_string, list=menu, skin_name=self.skinName, windowTitle=_("IceTV - Setup"))
+        except TypeError:
+            # Fallback for Beyonwiz
+            super(IceTVMain, self).__init__(session, title=_("IceTV version %s") % ice._version_string, list=menu)
+
         self["debugactions"] = ActionMap(
             contexts=["DirectionActions"],
             actions={
@@ -846,7 +953,7 @@ class IceTVMain(ChoiceBox):
         _session.open(MessageBox, _("IceTV disabled"), type=MessageBox.TYPE_INFO, timeout=5)
 
     def configure(self, res=None):
-        _session.open(IceTVUserTypeScreen)
+        _session.open(IceTVServerSetup)
 
     def fetch(self, res=None):
         try:
@@ -868,6 +975,56 @@ class IceTVLogView(TextBox):
     skin = """<screen name="IceTVLogView" backgroundColor="background" position="90,150" size="1100,450" title="Log">
         <widget font="Console;18" name="text" position="0,4" size="1100,446"/>
 </screen>"""
+
+
+class IceTVServerSetup(Screen):
+    skin = """
+<screen name="IceTVServerSetup" position="320,130" size="640,510" title="IceTV - Service selection" >
+    <widget name="instructions" position="20,10" size="600,100" font="Regular;22" />
+    <widget name="config" position="30,120" size="580,300" enableWrapAround="1" scrollbarMode="showAlways"/>
+    <ePixmap name="red" position="20,e-28" size="15,16" pixmap="skin_default/buttons/button_red.png" alphatest="blend" />
+    <ePixmap name="green" position="170,e-28" size="15,16" pixmap="skin_default/buttons/button_green.png" alphatest="blend" />
+    <widget name="key_red" position="40,e-30" size="150,25" valign="top" halign="left" font="Regular;20" />
+    <widget name="key_green" position="190,e-30" size="150,25" valign="top" halign="left" font="Regular;20" />
+    <widget name="key_yellow" position="340,e-30" size="150,25" valign="top" halign="left" font="Regular;20" />
+    <widget name="key_blue" position="490,e-30" size="150,25" valign="top" halign="left" font="Regular;20" />
+</screen>"""
+
+    _instructions = _("Please select the IceTV service that you wish to use.")
+
+    def __init__(self, session):
+        self.session = session
+        self.have_region_list = False
+        Screen.__init__(self, session)
+        self.setTitle(_("IceTV - Service selection"))
+        self["instructions"] = Label(self._instructions)
+        self["key_red"] = Label(_("Cancel"))
+        self["key_green"] = Label(_("Save"))
+        self["key_yellow"] = Label()
+        self["key_blue"] = Label()
+        self["config"] = MenuList(sorted(ice.iceTVServers.items()))
+        self["IrsActions"] = ActionMap(contexts=["SetupActions", "ColorActions"],
+                                       actions={"cancel": self.cancel,
+                                                "red": self.cancel,
+                                                "green": self.save,
+                                                "ok": self.save,
+                                                }, prio=-2
+                                       )
+
+    def cancel(self):
+        config.plugins.icetv.server.name.cancel()
+        print "[IceTV] server reset to", config.plugins.icetv.server.name.value
+        self.close(False)
+
+    def save(self):
+        item = self["config"].getCurrent()
+        config.plugins.icetv.server.name.value = item[1]
+        print "[IceTV] server set to", config.plugins.icetv.server.name.value
+        self.session.openWithCallback(self.userDone, IceTVUserTypeScreen)
+
+    def userDone(self, user_success):
+        if user_success:
+            self.close(True)
 
 
 class IceTVUserTypeScreen(Screen):
@@ -908,11 +1065,12 @@ class IceTVUserTypeScreen(Screen):
         if selection[1] == "newUser":
             self.session.openWithCallback(self.userDone, IceTVNewUserSetup)
         elif selection[1] == "oldUser":
-            self.session.openWithCallback(self.userDone, IceTVNewUserSetup)
+            self.session.openWithCallback(self.userDone, IceTVOldUserSetup)
 
     def userDone(self, success):
         if success:
             self.close(True)
+
 
 class IceTVNewUserSetup(ConfigListScreen, Screen):
     skin = """
@@ -979,8 +1137,14 @@ class IceTVNewUserSetup(ConfigListScreen, Screen):
             x[1].cancel()
         self.close(False)
 
-    def save(self):
+    def saveConfs(self):
+        config.plugins.icetv.server.name.save()
+        config.plugins.icetv.member.country.save()
+        config.plugins.icetv.member.region_id.save()
         self.saveAll()
+
+    def save(self):
+        self.saveConfs()
         self.session.openWithCallback(self.regionDone, IceTVRegionSetup)
 
     def regionDone(self, region_success):
@@ -994,8 +1158,12 @@ class IceTVNewUserSetup(ConfigListScreen, Screen):
 
 class IceTVOldUserSetup(IceTVNewUserSetup):
 
+    def __init__(self, session):
+        super(IceTVOldUserSetup, self).__init__(session)
+        self.skinName = self.__class__.__bases__[0].__name__
+
     def save(self):
-        self.saveAll()
+        self.saveConfs()
         self.session.openWithCallback(self.loginDone, IceTVLogin)
 
 
@@ -1049,24 +1217,23 @@ class IceTVRegionSetup(Screen):
         self.region_list_timer.start(3, True)
 
     def cancel(self):
+        config.plugins.icetv.member.region_id.cancel()
+        config.plugins.icetv.member.country.cancel()
         self.close(False)
 
     def save(self):
         item = self["config"].getCurrent()
         config.plugins.icetv.member.region_id.value = item[1]
-        config.plugins.icetv.member.region_id.save()
-        config.plugins.icetv.member.country.value = getCountryCode(item[2])
-        config.plugins.icetv.member.country.save()
+        config.plugins.icetv.member.country.value = item[2]
         self.close(self.have_region_list)
 
     def getRegionList(self):
         try:
             res = ice.Regions().get().json()
             regions = res["regions"]
-            # print "[icetv] regions:",regions
             rl = []
             for region in regions:
-                rl.append((str(region["name"]), int(region["id"]), str(region["country"])))
+                rl.append((str(region["name"]), int(region["id"]), str(region["country_code_3"])))
             self["config"].setList(rl)
             self["description"].setText("")
             if rl:
@@ -1111,8 +1278,8 @@ class IceTVLogin(Screen):
         self["key_yellow"] = Label()
         self["key_blue"] = Label()
         self["IrsActions"] = ActionMap(contexts=["SetupActions", "ColorActions"],
-                                       actions={"cancel": self.done,
-                                                "red": self.done,
+                                       actions={"cancel": self.cancel,
+                                                "red": self.cancel,
                                                 "green": self.done,
                                                 "ok": self.done,
                                                 }, prio=-2
@@ -1121,10 +1288,24 @@ class IceTVLogin(Screen):
         self.login_timer.callback.append(self.doLogin)
         self.onLayoutFinish.append(self.layoutFinished)
 
+    def cancel(self):
+        config.plugins.icetv.member.country.cancel()
+        self.done()
+
     def done(self):
         self.close(self.success)
 
     def layoutFinished(self):
+        qrcode = {
+            "AUS": "au_qr_code.png",
+            "DEU": "de_qr_code.png",
+        }.get(config.plugins.icetv.member.country.value, "au_qr_code.png")
+        qrcode_path = resolveFilename(SCOPE_PLUGINS, path.join("SystemPlugins/IceTV", qrcode))
+        if path.isfile(qrcode_path):
+            self["qrcode"].instance.setPixmap(LoadPixmap(qrcode_path))
+        else:
+            print "[IceTV] missing QR code file", qrcode_path
+
         self.login_timer.start(3, True)
 
     def doLogin(self):
@@ -1136,7 +1317,9 @@ class IceTVLogin(Screen):
             pass
         try:
             self.loginCmd()
-            self.success = True
+            self.success = self.setCountry()
+            if not self.success:
+                return
             self["instructions"].setText(_("Congratulations, you have successfully configured your %s %s "
                                            "for use with the IceTV Smart Recording service. "
                                            "Your IceTV guide will now download in the background.") % (getMachineBrand(), getMachineName()))
@@ -1147,6 +1330,7 @@ class IceTVLogin(Screen):
                                       "Download it today!"))
             self["qrcode"].show()
             config.plugins.icetv.configured.value = True
+            config.plugins.icetv.last_update_time.value = 0
             enableIceTV()
             fetcher.createFetchJob()
         except (IOError, RuntimeError) as ex:
@@ -1156,6 +1340,23 @@ class IceTVLogin(Screen):
             self["error"].show()
             self["error"].setText(msg)
 
+    def setCountry(self):
+        try:
+            res = ice.Region(config.plugins.icetv.member.region_id.value).get().json()
+            regions = res["regions"]
+            if regions:
+                config.plugins.icetv.member.country.value = regions[0]["country_code_3"]
+                return True
+            else:
+                self["instructions"].setText(_("No valid region details were foind"))
+                return False
+        except (IOError, RuntimeError) as ex:
+            msg = _logResponseException(fetcher, _("Can not download current region details"), ex)
+            self["instructions"].setText(_("There was an error downloading current region details"))
+            self["error"].setText(msg)
+            self["error"].show()
+            return False
+
     def loginCmd(self):
         ice.Login(config.plugins.icetv.member.email_address.value,
                   config.plugins.icetv.member.password.value).post()
@@ -1163,11 +1364,18 @@ class IceTVLogin(Screen):
 
 class IceTVCreateLogin(IceTVLogin):
 
+    def __init__(self, session):
+        super(IceTVCreateLogin, self).__init__(session)
+        self.skinName = self.__class__.__bases__[0].__name__
+
     def loginCmd(self):
         ice.Login(config.plugins.icetv.member.email_address.value,
                   config.plugins.icetv.member.password.value,
                   config.plugins.icetv.member.region_id.value).post()
 
+    # The country will have been set in IceTVNewUserSetup
+    def setCountry(self):
+        return True
 
 class IceTVNeedPassword(ConfigListScreen, Screen):
     skin = """
